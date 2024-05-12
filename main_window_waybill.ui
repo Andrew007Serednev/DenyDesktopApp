@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>768</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QListWidget" name="listWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>550</width>
+      <height>800</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>768</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Администрирование</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="action_5"/>
+    <addaction name="action_6"/>
+    <addaction name="separator"/>
+    <addaction name="action_8"/>
+    <addaction name="action_9"/>
+    <addaction name="separator"/>
+    <addaction name="action_11"/>
+    <addaction name="action_12"/>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action">
+   <property name="text">
+    <string>Диспетчер</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="text">
+    <string>Механик</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>Бухгалтер</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>Водитель</string>
+   </property>
+  </action>
+  <action name="action_6">
+   <property name="text">
+    <string>Кондуктор</string>
+   </property>
+  </action>
+  <action name="action_8">
+   <property name="text">
+    <string>Автобус</string>
+   </property>
+  </action>
+  <action name="action_9">
+   <property name="text">
+    <string>Маршрут</string>
+   </property>
+  </action>
+  <action name="action_11">
+   <property name="text">
+    <string>Механик</string>
+   </property>
+  </action>
+  <action name="action_12">
+   <property name="text">
+    <string>Диспетчер</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
