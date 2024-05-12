@@ -1,8 +1,11 @@
 import sys
+from data_provider import WaybillData, Driver
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QErrorMessage
 from Waybills import Ui_MainWindow
-import data
+from WaybillUnit import Ui_Dialog as WaybillUnitDialog
+from NewDriver import Ui_Dialog as NewDriverDialog
+
 
 
 class Appl(QMainWindow):
@@ -11,14 +14,37 @@ class Appl(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.ui.action_5.triggered.connect(self.openNewDriver)
+
         self.loadWayBills()
+        self.ui.waybillCreateButton.clicked.connect(self.openWaybillUnit)
         self.ui.waybillDeleteButton.clicked.connect(self.deleteWaybill)
 
+    def openNewDriver(self):
+        global NewDriver
+        NewDriver = QtWidgets.QDialog()
+        ui_new_driver = NewDriverDialog()
+        ui_new_driver.setupUi(NewDriver)
+        NewDriver.show()
+
+    def loadDriversList(self):
+        drivers = Driver()
+        drivers_list = drivers.get_driver_fio_list()
+        self.ui_new_driver.drivers_list.addItems(drivers_list)
+        self.ui_new_driver.drivers_list.setCurrentRow(0)
+
     def loadWayBills(self):
-        waybills = data.WaybillData()
+        waybills = WaybillData()
         waybill_list = waybills.get_waybill_list()
         self.ui.waybillList.addItems(waybill_list)
         self.ui.waybillList.setCurrentRow(0)
+
+    def openWaybillUnit(self):
+        global WaybillUnit
+        WaybillUnit = QtWidgets.QDialog()
+        ui_waybillunit = WaybillUnitDialog()
+        ui_waybillunit.setupUi(WaybillUnit)
+        WaybillUnit.show()
 
     def deleteWaybill(self):
         current_index = self.ui.waybillList.currentRow()
@@ -31,8 +57,9 @@ class Appl(QMainWindow):
                                         QMessageBox.Yes | QMessageBox.No)
         if question == QMessageBox.Yes:
             item = self.ui.waybillList.takeItem(current_index)
-            data.WaybillData().remove_waybill_file(item.text())
+            WaybillData().remove_waybill_file(item.text())
             del item
+
 
 def app():
     app = QApplication(sys.argv)
