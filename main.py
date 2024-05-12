@@ -27,7 +27,7 @@ class Appl(QMainWindow):
             return
         question = QMessageBox.question(self, 'Удаление путевого листа',
                                         'Вы точно хотите удалить выбранный путевой лист\n'
-                                        f'{item.text()}',
+                                        f'{item.text()} ?',
                                         QMessageBox.Yes | QMessageBox.No)
         if question == QMessageBox.Yes:
             item = self.ui.waybillList.takeItem(current_index)
