@@ -12,7 +12,7 @@ class Appl(QMainWindow):
         self.ui.setupUi(self)
 
         self.loadWayBills()
-        self.ui.waybilDeleteButton.clicked.connect(self.deleteWaybill)
+        self.ui.waybillDeleteButton.clicked.connect(self.deleteWaybill)
 
     def loadWayBills(self):
         waybills = data.WaybillData()

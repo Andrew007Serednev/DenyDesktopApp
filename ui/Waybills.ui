@@ -80,7 +80,7 @@
      </iconset>
     </property>
    </widget>
-   <widget class="QPushButton" name="waybilDeleteButton">
+   <widget class="QPushButton" name="waybillDeleteButton">
     <property name="geometry">
      <rect>
       <x>580</x>
