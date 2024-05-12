@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\Waybills.ui'
+# Form implementation generated from reading ui file '.\ui\Waybills.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -30,7 +30,7 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.waybillCreateButton.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(".\\static/new.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap(".\\ui\\../static/new.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.waybillCreateButton.setIcon(icon)
         self.waybillCreateButton.setObjectName("waybillCreateButton")
         self.waybillChangeButton = QtWidgets.QPushButton(self.centralwidget)
@@ -39,7 +39,7 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.waybillChangeButton.setFont(font)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(".\\static/edit.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon1.addPixmap(QtGui.QPixmap(".\\ui\\../static/edit.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.waybillChangeButton.setIcon(icon1)
         self.waybillChangeButton.setObjectName("waybillChangeButton")
         self.waybilDeleteButton = QtWidgets.QPushButton(self.centralwidget)
@@ -48,7 +48,7 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.waybilDeleteButton.setFont(font)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(".\\static/delete.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon2.addPixmap(QtGui.QPixmap(".\\ui\\../static/delete.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.waybilDeleteButton.setIcon(icon2)
         self.waybilDeleteButton.setObjectName("waybilDeleteButton")
         MainWindow.setCentralWidget(self.centralwidget)
@@ -95,7 +95,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Все путевые листы"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Путевые листы"))
         self.waybillCreateButton.setText(_translate("MainWindow", "Создать новый \n"
 "путевой лист"))
         self.waybillChangeButton.setText(_translate("MainWindow", "Изменить выбранный \n"

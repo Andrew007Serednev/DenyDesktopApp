@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Все путевые листы</string>
+   <string>Путевые листы</string>
   </property>
   <property name="documentMode">
    <bool>false</bool>
@@ -52,7 +52,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normalon>static/new.png</normalon>
+      <normalon>../static/new.png</normalon>
      </iconset>
     </property>
    </widget>
@@ -76,7 +76,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normalon>static/edit.png</normalon>
+      <normalon>../static/edit.png</normalon>
      </iconset>
     </property>
    </widget>
@@ -100,7 +100,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normalon>static/delete.png</normalon>
+      <normalon>../static/delete.png</normalon>
      </iconset>
     </property>
    </widget>
