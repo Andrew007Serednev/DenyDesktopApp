@@ -6,15 +6,23 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>768</width>
+    <width>826</width>
     <height>900</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Все путевые листы</string>
+  </property>
+  <property name="documentMode">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QListWidget" name="listWidget">
+   <widget class="QListWidget" name="waybillList">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -24,14 +32,86 @@
      </rect>
     </property>
    </widget>
+   <widget class="QPushButton" name="waybillCreateButton">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>30</y>
+      <width>201</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Создать новый 
+путевой лист</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>static/new.png</normalon>
+     </iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="waybillChangeButton">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>130</y>
+      <width>201</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Изменить выбранный 
+путевой лист</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>static/edit.png</normalon>
+     </iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="waybilDeleteButton">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>230</y>
+      <width>201</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Удалить выбранный 
+путевой лист</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>static/delete.png</normalon>
+     </iconset>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>768</width>
-     <height>21</height>
+     <width>826</width>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

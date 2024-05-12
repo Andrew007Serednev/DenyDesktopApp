@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\main_window_waybill.ui'
+# Form implementation generated from reading ui file '.\Waybills.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -14,15 +14,46 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(768, 900)
+        MainWindow.resize(826, 900)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        MainWindow.setFont(font)
+        MainWindow.setDocumentMode(False)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.listWidget = QtWidgets.QListWidget(self.centralwidget)
-        self.listWidget.setGeometry(QtCore.QRect(10, 10, 550, 800))
-        self.listWidget.setObjectName("listWidget")
+        self.waybillList = QtWidgets.QListWidget(self.centralwidget)
+        self.waybillList.setGeometry(QtCore.QRect(10, 10, 550, 800))
+        self.waybillList.setObjectName("waybillList")
+        self.waybillCreateButton = QtWidgets.QPushButton(self.centralwidget)
+        self.waybillCreateButton.setGeometry(QtCore.QRect(580, 30, 201, 51))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.waybillCreateButton.setFont(font)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(".\\static/new.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.waybillCreateButton.setIcon(icon)
+        self.waybillCreateButton.setObjectName("waybillCreateButton")
+        self.waybillChangeButton = QtWidgets.QPushButton(self.centralwidget)
+        self.waybillChangeButton.setGeometry(QtCore.QRect(580, 130, 201, 51))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.waybillChangeButton.setFont(font)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(".\\static/edit.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.waybillChangeButton.setIcon(icon1)
+        self.waybillChangeButton.setObjectName("waybillChangeButton")
+        self.waybilDeleteButton = QtWidgets.QPushButton(self.centralwidget)
+        self.waybilDeleteButton.setGeometry(QtCore.QRect(580, 230, 201, 51))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.waybilDeleteButton.setFont(font)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(".\\static/delete.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.waybilDeleteButton.setIcon(icon2)
+        self.waybilDeleteButton.setObjectName("waybilDeleteButton")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 768, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 826, 27))
         self.menubar.setObjectName("menubar")
         self.menu = QtWidgets.QMenu(self.menubar)
         self.menu.setObjectName("menu")
@@ -64,7 +95,13 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Все путевые листы"))
+        self.waybillCreateButton.setText(_translate("MainWindow", "Создать новый \n"
+"путевой лист"))
+        self.waybillChangeButton.setText(_translate("MainWindow", "Изменить выбранный \n"
+"путевой лист"))
+        self.waybilDeleteButton.setText(_translate("MainWindow", "Удалить выбранный \n"
+"путевой лист"))
         self.menu.setTitle(_translate("MainWindow", "Администрирование"))
         self.action.setText(_translate("MainWindow", "Диспетчер"))
         self.action_2.setText(_translate("MainWindow", "Механик"))

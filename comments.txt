@@ -1,0 +1,5 @@
+        # Waybill list Widget
+        # Button for create new waybill item
+        # Button for change selected waybill item
+        # Button for delete selected waybill item
+
