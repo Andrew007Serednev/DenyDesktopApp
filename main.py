@@ -1,10 +1,10 @@
 import sys
 from data_provider import WaybillData, Driver
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QErrorMessage
-from Waybills import Ui_MainWindow
-from WaybillUnit import Ui_Dialog as WaybillUnitDialog
-from NewDriver import Ui_Dialog as NewDriverDialog
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
+from forms.Waybills import Ui_MainWindow
+from forms.WaybillUnit import Ui_Dialog as WaybillUnitDialog
+from forms.NewDriver import Ui_Dialog as NewDriverDialog
 
 
 class Appl(QMainWindow):
