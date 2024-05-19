@@ -1,3 +1,7 @@
+#! /usr/bin/python3
+# -*- coding: utf-8 -*-
+
+
 import json
 import pathlib
 
@@ -38,16 +42,25 @@ class Driver:
     def get_driver_fio_list(self):
         driver_fio_list = []
         with open(self.driver_admin, 'r') as json_file:
-            driver_fio_list = json.load(json_file)
-        # for key, value in (driver_fio_dict.get('driver_fio_dict')).items():
-        #     driver_fio_list.append(value)
-        return driver_fio_list.keys()
+            driver_fio_dict = json.load(json_file)
+        for value in driver_fio_dict.values():
+            print(value)
+            driver_fio_list.append(value.get('new_driver_fio_edit'))
+        # print(driver_fio_list)
+        return driver_fio_list
 
     def set_new_driver(self, driver_set):
+        new_driver = {}
         with open(self.driver_admin, 'r') as json_file:
             data = json.loads(json_file.read())
-        data.update(driver_set)
-        # print(f'{data}, {type(data)}')
+        if not data:
+            max_driver_id = 0
+        else:
+            max_driver_id = max(data.keys())
+            max_driver_id = int(max_driver_id)
+        max_driver_id += 1
+        new_driver[max_driver_id] = driver_set
+        data.update(new_driver)
         with open(self.driver_admin, 'w', encoding="utf-8") as json_file:
             json.dump(data, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
 
