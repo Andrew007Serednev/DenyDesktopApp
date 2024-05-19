@@ -1,8 +1,44 @@
 {
-    "driver_fio_dict":{
-        "0":"Середнев Андрей Андреевич",
-        "1":"Середнев Тимофей Андреевич",
-        "2":"Шаломов Владислав Александрович",
-        "3":"Шаломов Виктор Александрович"
+    "A S":{
+        "new_driver_snils_edit":"123",
+        "new_driver_license_edit":"098",
+        "new_driver_start_date":[
+            2000,
+            1,
+            1
+        ],
+        "new_driver_end_date":[
+            2000,
+            1,
+            1
+        ]
+    },
+    "S E":{
+        "new_driver_snils_edit":"456",
+        "new_driver_license_edit":"765",
+        "new_driver_start_date":[
+            1999,
+            1,
+            1
+        ],
+        "new_driver_end_date":[
+            2001,
+            1,
+            1
+        ]
+    },
+    "":{
+        "new_driver_snils_edit":"",
+        "new_driver_license_edit":"",
+        "new_driver_start_date":[
+            2000,
+            1,
+            1
+        ],
+        "new_driver_end_date":[
+            2000,
+            1,
+            1
+        ]
     }
 }

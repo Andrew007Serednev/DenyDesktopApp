@@ -26,7 +26,6 @@ class Drivers:
         with open(self.data_file, 'w') as json_file:
             json.dump(self.data_dict, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
 
-
     def send_new_driver_fio(self):
         pass
 

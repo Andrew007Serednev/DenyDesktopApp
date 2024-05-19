@@ -12,42 +12,57 @@ class Appl(QMainWindow):
         super(Appl, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.loadWayBills()
-        self.ui.waybillCreateButton.clicked.connect(self.openWaybillUnit)
-        self.ui.waybillDeleteButton.clicked.connect(self.deleteWaybill)
-        #Menu
-        self.ui.action_5.triggered.connect(self.openNewDriver)
-        #Dialogs
+        self.load_way_bills()
+        self.ui.waybillCreateButton.clicked.connect(self.open_waybill_unit)
+        self.ui.waybillDeleteButton.clicked.connect(self.delete_waybill)
+        # Menu
+        self.ui.action_5.triggered.connect(self.open_new_driver)
+        # Dialogs. Drivers
         self.ui_new_driver = NewDriverDialog()
 
-    def openNewDriver(self):
+    def open_new_driver(self):
         global NewDriver
         NewDriver = QtWidgets.QDialog()
         self.ui_new_driver.setupUi(NewDriver)
-        self.loadDriversList()
+        self.load_drivers_list()
         NewDriver.show()
+        self.ui_new_driver.driver_save_button.clicked.connect(self.save_new_driver)
 
-    def loadDriversList(self):
+    def save_new_driver(self):
+        new_driver_fio_edit = self.ui_new_driver.new_driver_fio_edit.text()
+        new_driver_snils_edit = self.ui_new_driver.new_driver_snils_edit.text()
+        new_driver_license_edit = self.ui_new_driver.new_driver_license_edit.text()
+        new_driver_start_date = self.ui_new_driver.new_driver_start_date.date().getDate()
+        new_driver_end_date = self.ui_new_driver.new_driver_end_date.date().getDate()
+        driver_set = {new_driver_fio_edit: {
+                            'new_driver_snils_edit': new_driver_snils_edit,
+                            'new_driver_license_edit': new_driver_license_edit,
+                            'new_driver_start_date': new_driver_start_date,
+                            'new_driver_end_date': new_driver_end_date}
+                      }
+        Driver().set_new_driver(driver_set)
+
+    def load_drivers_list(self):
         drivers = Driver()
         drivers_list = drivers.get_driver_fio_list()
         print(drivers_list)
         self.ui_new_driver.drivers_list.addItems(drivers_list)
         self.ui_new_driver.drivers_list.setCurrentRow(0)
 
-    def loadWayBills(self):
+    def load_way_bills(self):
         waybills = WaybillData()
         waybill_list = waybills.get_waybill_list()
         self.ui.waybillList.addItems(waybill_list)
         self.ui.waybillList.setCurrentRow(0)
 
-    def openWaybillUnit(self):
+    def open_waybill_unit(self):
         global WaybillUnit
         WaybillUnit = QtWidgets.QDialog()
         ui_waybillunit = WaybillUnitDialog()
         ui_waybillunit.setupUi(WaybillUnit)
         WaybillUnit.show()
 
-    def deleteWaybill(self):
+    def delete_waybill(self):
         current_index = self.ui.waybillList.currentRow()
         item = self.ui.waybillList.item(current_index)
         if item is None:
