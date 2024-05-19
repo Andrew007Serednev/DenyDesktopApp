@@ -9,6 +9,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 from forms.Waybills import Ui_MainWindow
 from forms.WaybillUnit import Ui_Dialog as WaybillUnitDialog
 from forms.NewDriver import Ui_Dialog as NewDriverDialog
+from forms.Route import Ui_Dialog as NewRouteDialog
+
 
 
 class Appl(QMainWindow):
@@ -21,8 +23,11 @@ class Appl(QMainWindow):
         self.ui.waybillDeleteButton.clicked.connect(self.delete_waybill)
         # Menu
         self.ui.action_5.triggered.connect(self.open_new_driver)
+        self.ui.action_9.triggered.connect(self.open_new_route)
+
         # Dialogs. Drivers
         self.ui_new_driver = NewDriverDialog()
+        self.ui_new_route = NewRouteDialog()
 
     def open_new_driver(self):
         global NewDriver
@@ -31,6 +36,12 @@ class Appl(QMainWindow):
         self.load_drivers_list()
         NewDriver.show()
         self.ui_new_driver.driver_save_button.clicked.connect(self.save_new_driver)
+
+    def open_new_route(self):
+        global NewRoute
+        NewRoute = QtWidgets.QDialog()
+        self.ui_new_route.setupUi(NewRoute)
+        NewRoute.show()
 
     def save_new_driver(self):
         new_driver_fio_edit = self.ui_new_driver.new_driver_fio_edit.text()

@@ -10,14 +10,6 @@ import pathlib
 # for interaction with App tasks. App->JSON=set, JSON->App=get
 
 
-class JSONWorker:
-    def get_json_value(self):
-        pass
-
-    def save_json_values(self):
-        pass
-
-
 class WaybillData:
     def __init__(self):
         self.directory = pathlib.Path('.\\waybills')
@@ -55,10 +47,14 @@ class Driver:
             data = json.loads(json_file.read())
         if not data:
             max_driver_id = 0
+            print(f'IF NOT: {max_driver_id}, {type(max_driver_id)}')
         else:
             max_driver_id = max(data.keys())
+            print(f'ELSE, MAX: {max_driver_id}, {type(max_driver_id)}')
             max_driver_id = int(max_driver_id)
+            print(f'ELSE, INT{max_driver_id}, {type(max_driver_id)}')
         max_driver_id += 1
+        print(f'+1: {max_driver_id}, {type(max_driver_id)}')
         new_driver[max_driver_id] = driver_set
         data.update(new_driver)
         with open(self.driver_admin, 'w', encoding="utf-8") as json_file:

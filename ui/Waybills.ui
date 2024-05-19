@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>826</width>
+    <width>895</width>
     <height>900</height>
    </rect>
   </property>
@@ -104,13 +104,38 @@
      </iconset>
     </property>
    </widget>
+   <widget class="QTreeWidget" name="treeWidget">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>350</y>
+      <width>281</width>
+      <height>192</height>
+     </rect>
+    </property>
+    <column>
+     <property name="text">
+      <string>20.03</string>
+     </property>
+    </column>
+    <item>
+     <property name="text">
+      <string>3-1 борт 505, Шишкин Гашиш</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>3-2 Борт 100 Чекатило Маленький</string>
+     </property>
+    </item>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>826</width>
+     <width>895</width>
      <height>27</height>
     </rect>
    </property>
