@@ -95,10 +95,10 @@
   <widget class="QListWidget" name="listWidget_2">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>110</y>
+     <x>20</x>
+     <y>710</y>
      <width>81</width>
-     <height>551</height>
+     <height>81</height>
     </rect>
    </property>
    <item>
@@ -125,11 +125,16 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>80</y>
-     <width>47</width>
-     <height>13</height>
+     <x>20</x>
+     <y>680</y>
+     <width>71</width>
+     <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Маршрут</string>
@@ -138,10 +143,10 @@
   <widget class="QListWidget" name="listWidget_3">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>110</y>
+     <x>140</x>
+     <y>710</y>
      <width>101</width>
-     <height>551</height>
+     <height>81</height>
     </rect>
    </property>
    <item>
@@ -168,8 +173,8 @@
   <widget class="QListWidget" name="listWidget_4">
    <property name="geometry">
     <rect>
-     <x>590</x>
-     <y>110</y>
+     <x>830</x>
+     <y>190</y>
      <width>71</width>
      <height>561</height>
     </rect>
@@ -218,11 +223,16 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>390</x>
-     <y>80</y>
-     <width>91</width>
-     <height>16</height>
+     <x>140</x>
+     <y>680</y>
+     <width>131</width>
+     <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Кол-во графиков</string>
@@ -231,8 +241,8 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>560</x>
-     <y>80</y>
+     <x>800</x>
+     <y>160</y>
      <width>51</width>
      <height>16</height>
     </rect>
@@ -240,6 +250,17 @@
    <property name="text">
     <string>График</string>
    </property>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>670</y>
+     <width>341</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout"/>
   </widget>
  </widget>
  <resources/>

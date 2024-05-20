@@ -92,6 +92,11 @@
      <height>28</height>
     </rect>
    </property>
+   <item>
+    <property name="text">
+     <string>3</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="label_6">
    <property name="geometry">
@@ -116,6 +121,11 @@
      <height>28</height>
     </rect>
    </property>
+   <item>
+    <property name="text">
+     <string>7</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="label_7">
    <property name="geometry">
@@ -139,6 +149,11 @@
      <height>28</height>
     </rect>
    </property>
+   <item>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="waybill_num_label">
    <property name="geometry">
