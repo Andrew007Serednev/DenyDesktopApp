@@ -50,11 +50,11 @@ class Appl(QMainWindow):
         new_driver_start_date = self.ui_new_driver.new_driver_start_date.date().getDate()
         new_driver_end_date = self.ui_new_driver.new_driver_end_date.date().getDate()
         driver_set = {
-            'new_driver_fio_edit': new_driver_fio_edit,
-            'new_driver_snils_edit': new_driver_snils_edit,
-            'new_driver_license_edit': new_driver_license_edit,
-            'new_driver_start_date': new_driver_start_date,
-            'new_driver_end_date': new_driver_end_date
+            new_driver_fio_edit: {
+                'new_driver_snils_edit': new_driver_snils_edit,
+                'new_driver_license_edit': new_driver_license_edit,
+                'new_driver_start_date': new_driver_start_date,
+                'new_driver_end_date': new_driver_end_date}
         }
         Driver().set_new_driver(driver_set)
         self.ui_new_driver.drivers_list.clear()
