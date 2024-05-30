@@ -12,7 +12,6 @@ from forms.NewDriver import Ui_Dialog as NewDriverDialog
 from forms.Route import Ui_Dialog as NewRouteDialog
 
 
-
 class Appl(QMainWindow):
     def __init__(self):
         super(Appl, self).__init__()
@@ -21,12 +20,15 @@ class Appl(QMainWindow):
         self.load_waybills()
         self.ui.waybillCreateButton.clicked.connect(self.open_waybill_unit)
         self.ui.waybillDeleteButton.clicked.connect(self.delete_waybill)
+
         # Menu
         self.ui.action_5.triggered.connect(self.open_new_driver)
         self.ui.action_9.triggered.connect(self.open_new_route)
 
         # Dialogs. Drivers
         self.ui_new_driver = NewDriverDialog()
+
+        # Dialogs. Route
         self.ui_new_route = NewRouteDialog()
 
     def open_new_driver(self):
@@ -36,12 +38,13 @@ class Appl(QMainWindow):
         self.load_drivers_list()
         NewDriver.show()
         self.ui_new_driver.driver_save_button.clicked.connect(self.save_new_driver)
+        self.ui_new_driver.driver_delete_button.clicked.connect(self.remove_driver_from_list)
 
-    def open_new_route(self):
-        global NewRoute
-        NewRoute = QtWidgets.QDialog()
-        self.ui_new_route.setupUi(NewRoute)
-        NewRoute.show()
+    def load_drivers_list(self):
+        drivers_list = Driver().get_driver_fio_list_logic()
+        # print(drivers_list)
+        self.ui_new_driver.drivers_list.addItems(drivers_list)
+        self.ui_new_driver.drivers_list.setCurrentRow(0)
 
     def save_new_driver(self):
         new_driver_fio_edit = self.ui_new_driver.new_driver_fio_edit.text()
@@ -50,21 +53,35 @@ class Appl(QMainWindow):
         new_driver_start_date = self.ui_new_driver.new_driver_start_date.date().getDate()
         new_driver_end_date = self.ui_new_driver.new_driver_end_date.date().getDate()
         driver_set = {
-            new_driver_fio_edit: {
-                'new_driver_snils_edit': new_driver_snils_edit,
-                'new_driver_license_edit': new_driver_license_edit,
+                'new_driver_fio': new_driver_fio_edit,
+                'new_driver_snils': new_driver_snils_edit,
+                'new_driver_license': new_driver_license_edit,
                 'new_driver_start_date': new_driver_start_date,
-                'new_driver_end_date': new_driver_end_date}
+                'new_driver_end_date': new_driver_end_date
         }
-        Driver().set_new_driver(driver_set)
+        Driver().set_new_driver_logic(driver_set)
         self.ui_new_driver.drivers_list.clear()
         self.load_drivers_list()
 
-    def load_drivers_list(self):
-        drivers_list = Driver().get_driver_fio_list()
-        # print(drivers_list)
-        self.ui_new_driver.drivers_list.addItems(drivers_list)
-        self.ui_new_driver.drivers_list.setCurrentRow(0)
+    def remove_driver_from_list(self):
+        current_index = self.ui_new_driver.drivers_list.currentRow()
+        item = self.ui_new_driver.drivers_list.item(current_index)
+        if item is None:
+            return
+        question = QMessageBox.question(self, 'Удаление путевого листа',
+                                        'Вы точно хотите удалить выбранный путевой лист\n'
+                                        f'{item.text()} ?',
+                                        QMessageBox.Yes | QMessageBox.No)
+        if question == QMessageBox.Yes:
+            item = self.ui_new_driver.drivers_list.takeItem(current_index)
+            Driver().remove_driver_from_list_logic(item.text())
+            del item
+
+    def open_new_route(self):
+        global NewRoute
+        NewRoute = QtWidgets.QDialog()
+        self.ui_new_route.setupUi(NewRoute)
+        NewRoute.show()
 
     def load_waybills(self):
         waybills = WaybillData()
