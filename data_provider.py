@@ -31,38 +31,39 @@ class Driver:
     def __init__(self):
         self.driver_admin = pathlib.Path('.\\admin\\drivers.json')
 
-    def get_driver_fio_list(self):
+    def get_driver_fio_list_logic(self):
         driver_fio_list = []
         with open(self.driver_admin, 'r') as json_file:
             driver_fio_dict = json.load(json_file)
-        driver_fio_list = driver_fio_dict.keys()
-        # for value in driver_fio_dict.values():
-        #     print(value)
-        #     driver_fio_list.append(value.get('new_driver_fio_edit'))
-        # print(driver_fio_list)
+        for value in driver_fio_dict.values():
+            driver_fio_list.append(value.get('new_driver_fio'))
         return driver_fio_list
 
-    def set_new_driver(self, driver_set):
+    def set_new_driver_logic(self, driver_set):
         new_driver = {}
         with open(self.driver_admin, 'r') as json_file:
             data = json.loads(json_file.read())
-        # if not data:
-        #     max_driver_id = 0
-        #     print(f'IF NOT: {max_driver_id}, {type(max_driver_id)}')
-        # else:
-        #     max_driver_id = max(data.keys())
-        #     print(f'ELSE, MAX: {max_driver_id}, {type(max_driver_id)}')
-        #     max_driver_id = int(max_driver_id)
-        #     print(f'ELSE, INT{max_driver_id}, {type(max_driver_id)}')
-        # max_driver_id += 1
-        # print(f'+1: {max_driver_id}, {type(max_driver_id)}')
-        # new_driver[max_driver_id] = driver_set
-        print(f'SET: {driver_set}, {type(driver_set)}')
-        data.update(driver_set)
-        print(f'DATA: {data}, {type(data)}')
-
+        if not data:
+            max_driver_id = 0
+        else:
+            max_driver_id = max([int(item) for item in data.keys()])
+        max_driver_id += 1
+        new_driver[max_driver_id] = driver_set
+        data.update(new_driver)
         with open(self.driver_admin, 'w', encoding="utf-8") as json_file:
             json.dump(data, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
+
+    def remove_driver_from_list_logic(self, driver_fio):
+        del_item = None
+        with open(self.driver_admin, 'r') as json_file:
+            driver_fio_dict = json.load(json_file)
+            for pare in driver_fio_dict.items():
+                if pare[1]['new_driver_fio'] == driver_fio:
+                    del_item = pare[0]
+                    break
+            del driver_fio_dict[del_item]
+        with open(self.driver_admin, 'w') as json_file:
+            json.dump(driver_fio_dict, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
 
 
 # if __name__ == "__main__":
