@@ -1,8 +1,8 @@
 {
     "1":{
-        "new_driver_fio":"Aa AA aa",
-        "new_driver_snils":"23456789",
-        "new_driver_license":"r34567",
+        "new_driver_fio":"Asd Fgh",
+        "new_driver_snils":"12356789",
+        "new_driver_license":"oiuytrew",
         "new_driver_start_date":[
             2000,
             1,
@@ -10,81 +10,6 @@
         ],
         "new_driver_end_date":[
             2001,
-            2,
-            2
-        ]
-    },
-    "4":{
-        "new_driver_fio":"QWERTYUIO",
-        "new_driver_snils":"fghjkl",
-        "new_driver_license":"4567890-",
-        "new_driver_start_date":[
-            2000,
-            1,
-            1
-        ],
-        "new_driver_end_date":[
-            2000,
-            1,
-            1
-        ]
-    },
-    "5":{
-        "new_driver_fio":"QWERTYUIO1",
-        "new_driver_snils":"fghjkl",
-        "new_driver_license":"4567890-",
-        "new_driver_start_date":[
-            2000,
-            1,
-            1
-        ],
-        "new_driver_end_date":[
-            2000,
-            1,
-            1
-        ]
-    },
-    "6":{
-        "new_driver_fio":"QWERTYUIO12",
-        "new_driver_snils":"fghjkl",
-        "new_driver_license":"4567890-",
-        "new_driver_start_date":[
-            2000,
-            1,
-            1
-        ],
-        "new_driver_end_date":[
-            2000,
-            1,
-            1
-        ]
-    },
-    "7":{
-        "new_driver_fio":"QWERTYUIO123",
-        "new_driver_snils":"fghjkl",
-        "new_driver_license":"4567890-",
-        "new_driver_start_date":[
-            2000,
-            1,
-            1
-        ],
-        "new_driver_end_date":[
-            2000,
-            1,
-            1
-        ]
-    },
-    "8":{
-        "new_driver_fio":"QWERTYUIO123!",
-        "new_driver_snils":"fghjkl",
-        "new_driver_license":"4567890-",
-        "new_driver_start_date":[
-            2000,
-            1,
-            1
-        ],
-        "new_driver_end_date":[
-            2000,
             1,
             1
         ]

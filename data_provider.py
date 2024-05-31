@@ -12,7 +12,7 @@ import pathlib
 
 class WaybillData:
     def __init__(self):
-        self.directory = pathlib.Path('.\\waybills')
+        self.directory = pathlib.Path('data/waybills')
 
     def get_waybill_list(self):
         pattern = '*.json'
