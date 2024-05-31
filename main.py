@@ -3,11 +3,11 @@
 
 
 import sys
-from data_provider import WaybillData, Driver
+from data_provider import orderData, Driver
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
-from forms.Waybills import Ui_MainWindow
-from forms.WaybillUnit import Ui_Dialog as WaybillUnitDialog
+from forms.Orders import Ui_MainWindow
+from forms.OrderUnit import Ui_Dialog as orderUnitDialog
 from forms.NewDriver import Ui_Dialog as NewDriverDialog
 from forms.Route import Ui_Dialog as NewRouteDialog
 
@@ -17,9 +17,9 @@ class Appl(QMainWindow):
         super(Appl, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.load_waybills()
-        self.ui.waybillCreateButton.clicked.connect(self.open_waybill_unit)
-        self.ui.waybillDeleteButton.clicked.connect(self.delete_waybill)
+        self.load_orders()
+        self.ui.orderCreateButton.clicked.connect(self.open_order_unit)
+        self.ui.orderDeleteButton.clicked.connect(self.delete_order)
 
         # Menu
         self.ui.action_5.triggered.connect(self.open_new_driver)
@@ -83,22 +83,22 @@ class Appl(QMainWindow):
         self.ui_new_route.setupUi(NewRoute)
         NewRoute.show()
 
-    def load_waybills(self):
-        waybills = WaybillData()
-        waybill_list = waybills.get_waybill_list()
-        self.ui.waybillList.addItems(waybill_list)
-        self.ui.waybillList.setCurrentRow(0)
+    def load_orders(self):
+        orders = orderData()
+        order_list = orders.get_order_list()
+        self.ui.orderList.addItems(order_list)
+        self.ui.orderList.setCurrentRow(0)
 
-    def open_waybill_unit(self):
-        global WaybillUnit
-        WaybillUnit = QtWidgets.QDialog()
-        ui_waybillunit = WaybillUnitDialog()
-        ui_waybillunit.setupUi(WaybillUnit)
-        WaybillUnit.show()
+    def open_order_unit(self):
+        global orderUnit
+        orderUnit = QtWidgets.QDialog()
+        ui_orderunit = orderUnitDialog()
+        ui_orderunit.setupUi(orderUnit)
+        orderUnit.show()
 
-    def delete_waybill(self):
-        current_index = self.ui.waybillList.currentRow()
-        item = self.ui.waybillList.item(current_index)
+    def delete_order(self):
+        current_index = self.ui.orderList.currentRow()
+        item = self.ui.orderList.item(current_index)
         if item is None:
             return
         question = QMessageBox.question(self, 'Удаление путевого листа',
@@ -106,8 +106,8 @@ class Appl(QMainWindow):
                                         f'{item.text()} ?',
                                         QMessageBox.Yes | QMessageBox.No)
         if question == QMessageBox.Yes:
-            item = self.ui.waybillList.takeItem(current_index)
-            WaybillData().remove_waybill_file(item.text())
+            item = self.ui.orderList.takeItem(current_index)
+            orderData().remove_order_file(item.text())
             del item
 
 

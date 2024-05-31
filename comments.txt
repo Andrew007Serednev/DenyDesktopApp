@@ -1,5 +1,5 @@
-        # Waybill list Widget
-        # Button for create new waybill item
-        # Button for change selected waybill item
-        # Button for delete selected waybill item
+        # order list Widget
+        # Button for create new order item
+        # Button for change selected order item
+        # Button for delete selected order item
 

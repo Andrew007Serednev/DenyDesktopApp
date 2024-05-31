@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\ui\orders.ui'
+# Form implementation generated from reading ui file '.\ui\Orders.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(826, 900)
+        MainWindow.resize(895, 900)
         font = QtGui.QFont()
         font.setPointSize(12)
         MainWindow.setFont(font)
@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
         self.orderList.setGeometry(QtCore.QRect(10, 10, 550, 800))
         self.orderList.setObjectName("orderList")
         self.orderCreateButton = QtWidgets.QPushButton(self.centralwidget)
-        self.orderCreateButton.setGeometry(QtCore.QRect(580, 30, 201, 51))
+        self.orderCreateButton.setGeometry(QtCore.QRect(580, 30, 241, 51))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.orderCreateButton.setFont(font)
@@ -34,7 +34,7 @@ class Ui_MainWindow(object):
         self.orderCreateButton.setIcon(icon)
         self.orderCreateButton.setObjectName("orderCreateButton")
         self.orderChangeButton = QtWidgets.QPushButton(self.centralwidget)
-        self.orderChangeButton.setGeometry(QtCore.QRect(580, 130, 201, 51))
+        self.orderChangeButton.setGeometry(QtCore.QRect(580, 130, 241, 51))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.orderChangeButton.setFont(font)
@@ -43,7 +43,7 @@ class Ui_MainWindow(object):
         self.orderChangeButton.setIcon(icon1)
         self.orderChangeButton.setObjectName("orderChangeButton")
         self.orderDeleteButton = QtWidgets.QPushButton(self.centralwidget)
-        self.orderDeleteButton.setGeometry(QtCore.QRect(580, 230, 201, 51))
+        self.orderDeleteButton.setGeometry(QtCore.QRect(580, 230, 241, 51))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.orderDeleteButton.setFont(font)
@@ -51,9 +51,14 @@ class Ui_MainWindow(object):
         icon2.addPixmap(QtGui.QPixmap(".\\ui\\../static/delete.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.orderDeleteButton.setIcon(icon2)
         self.orderDeleteButton.setObjectName("orderDeleteButton")
+        self.treeWidget = QtWidgets.QTreeWidget(self.centralwidget)
+        self.treeWidget.setGeometry(QtCore.QRect(580, 350, 291, 192))
+        self.treeWidget.setObjectName("treeWidget")
+        item_0 = QtWidgets.QTreeWidgetItem(self.treeWidget)
+        item_0 = QtWidgets.QTreeWidgetItem(self.treeWidget)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 826, 27))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 895, 27))
         self.menubar.setObjectName("menubar")
         self.menu = QtWidgets.QMenu(self.menubar)
         self.menu.setObjectName("menu")
@@ -96,12 +101,15 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Путевые листы"))
-        self.orderCreateButton.setText(_translate("MainWindow", "Создать новый \n"
-"путевой лист"))
-        self.orderChangeButton.setText(_translate("MainWindow", "Изменить выбранный \n"
-"путевой лист"))
-        self.orderDeleteButton.setText(_translate("MainWindow", "Удалить выбранный \n"
-"путевой лист"))
+        self.orderCreateButton.setText(_translate("MainWindow", "Создать новый наряд"))
+        self.orderChangeButton.setText(_translate("MainWindow", "Изменить выбранный наряд"))
+        self.orderDeleteButton.setText(_translate("MainWindow", "Удалить выбранный наряд"))
+        self.treeWidget.headerItem().setText(0, _translate("MainWindow", "20.03"))
+        __sortingEnabled = self.treeWidget.isSortingEnabled()
+        self.treeWidget.setSortingEnabled(False)
+        self.treeWidget.topLevelItem(0).setText(0, _translate("MainWindow", "3-1 борт 505, Шишкин Гашиш"))
+        self.treeWidget.topLevelItem(1).setText(0, _translate("MainWindow", "3-2 Борт 100 Чекатило Маленький"))
+        self.treeWidget.setSortingEnabled(__sortingEnabled)
         self.menu.setTitle(_translate("MainWindow", "Администрирование"))
         self.action.setText(_translate("MainWindow", "Диспетчер"))
         self.action_2.setText(_translate("MainWindow", "Механик"))

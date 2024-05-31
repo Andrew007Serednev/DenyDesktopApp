@@ -10,19 +10,19 @@ import pathlib
 # for interaction with App tasks. App->JSON=set, JSON->App=get
 
 
-class WaybillData:
+class orderData:
     def __init__(self):
-        self.directory = pathlib.Path('data/waybills')
+        self.directory = pathlib.Path('data/orders')
 
-    def get_waybill_list(self):
+    def get_order_list(self):
         pattern = '*.json'
-        waybillist = []
+        orderist = []
         for currentFile in self.directory.glob(pattern):
-            waybillist.append(currentFile.stem)
-        print(waybillist)
-        return waybillist
+            orderist.append(currentFile.stem)
+        print(orderist)
+        return orderist
 
-    def remove_waybill_file(self, name):
+    def remove_order_file(self, name):
         json_file = pathlib.Path.joinpath(self.directory, name).with_suffix('.json')
         json_file.unlink()
 
@@ -67,7 +67,7 @@ class Driver:
 
 
 # if __name__ == "__main__":
-#     jsonData = WaybillData()
-#     waybilllist = jsonData.get_waybill_list()
-#     jsonData.remove_waybill_file('12-06 36 5 4-4 705')
+#     jsonData = orderData()
+#     orderlist = jsonData.get_order_list()
+#     jsonData.remove_order_file('12-06 36 5 4-4 705')
 

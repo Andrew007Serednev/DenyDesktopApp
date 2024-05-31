@@ -37,7 +37,7 @@
      <rect>
       <x>580</x>
       <y>30</y>
-      <width>201</width>
+      <width>241</width>
       <height>51</height>
      </rect>
     </property>
@@ -47,8 +47,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Создать новый 
-путевой лист</string>
+     <string>Создать новый наряд</string>
     </property>
     <property name="icon">
      <iconset>
@@ -61,7 +60,7 @@
      <rect>
       <x>580</x>
       <y>130</y>
-      <width>201</width>
+      <width>241</width>
       <height>51</height>
      </rect>
     </property>
@@ -71,8 +70,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Изменить выбранный 
-путевой лист</string>
+     <string>Изменить выбранный наряд</string>
     </property>
     <property name="icon">
      <iconset>
@@ -85,7 +83,7 @@
      <rect>
       <x>580</x>
       <y>230</y>
-      <width>201</width>
+      <width>241</width>
       <height>51</height>
      </rect>
     </property>
@@ -95,8 +93,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Удалить выбранный 
-путевой лист</string>
+     <string>Удалить выбранный наряд</string>
     </property>
     <property name="icon">
      <iconset>
@@ -107,9 +104,9 @@
    <widget class="QTreeWidget" name="treeWidget">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>580</x>
       <y>350</y>
-      <width>281</width>
+      <width>291</width>
       <height>192</height>
      </rect>
     </property>

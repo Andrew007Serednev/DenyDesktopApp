@@ -155,7 +155,7 @@
     </property>
    </item>
   </widget>
-  <widget class="QLabel" name="waybill_num_label">
+  <widget class="QLabel" name="order_num_label">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -380,7 +380,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QTimeEdit" name="waybill_start_time">
+  <widget class="QTimeEdit" name="order_start_time">
    <property name="geometry">
     <rect>
      <x>410</x>
@@ -415,7 +415,7 @@
    <property name="currentIndex">
     <number>0</number>
    </property>
-   <widget class="QWidget" name="waybill_end_tab">
+   <widget class="QWidget" name="order_end_tab">
     <attribute name="title">
      <string>В завершении путевого листа</string>
     </attribute>
