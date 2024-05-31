@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>895</width>
+    <width>1039</width>
     <height>900</height>
    </rect>
   </property>
@@ -25,18 +25,18 @@
    <widget class="QListWidget" name="orderList">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>550</width>
-      <height>800</height>
+      <x>510</x>
+      <y>80</y>
+      <width>211</width>
+      <height>751</height>
      </rect>
     </property>
    </widget>
    <widget class="QPushButton" name="orderCreateButton">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>30</y>
+      <x>760</x>
+      <y>80</y>
       <width>241</width>
       <height>51</height>
      </rect>
@@ -58,8 +58,8 @@
    <widget class="QPushButton" name="orderChangeButton">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>130</y>
+      <x>760</x>
+      <y>170</y>
       <width>241</width>
       <height>51</height>
      </rect>
@@ -81,8 +81,8 @@
    <widget class="QPushButton" name="orderDeleteButton">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>230</y>
+      <x>760</x>
+      <y>260</y>
       <width>241</width>
       <height>51</height>
      </rect>
@@ -101,30 +101,41 @@
      </iconset>
     </property>
    </widget>
-   <widget class="QTreeWidget" name="treeWidget">
+   <widget class="QCalendarWidget" name="calendarWidget">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>350</y>
-      <width>291</width>
-      <height>192</height>
+      <x>40</x>
+      <y>80</y>
+      <width>431</width>
+      <height>261</height>
      </rect>
     </property>
-    <column>
-     <property name="text">
-      <string>20.03</string>
-     </property>
-    </column>
-    <item>
-     <property name="text">
-      <string>3-1 борт 505, Шишкин Гашиш</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>3-2 Борт 100 Чекатило Маленький</string>
-     </property>
-    </item>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>40</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Дата наряда</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>40</y>
+      <width>211</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Наряды на выбранную дату</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -132,7 +143,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>895</width>
+     <width>1039</width>
      <height>27</height>
     </rect>
    </property>
