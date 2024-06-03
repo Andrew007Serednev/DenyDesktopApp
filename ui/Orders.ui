@@ -10,13 +10,19 @@
     <height>900</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="font">
    <font>
     <pointsize>12</pointsize>
    </font>
   </property>
   <property name="windowTitle">
-   <string>Путевые листы</string>
+   <string>Наряды</string>
   </property>
   <property name="documentMode">
    <bool>false</bool>

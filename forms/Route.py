@@ -18,6 +18,7 @@ class Ui_Dialog(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         Dialog.setFont(font)
+        Dialog.setModal(True)
         self.RouteEdit = QtWidgets.QLineEdit(Dialog)
         self.RouteEdit.setGeometry(QtCore.QRect(20, 80, 71, 31))
         self.RouteEdit.setObjectName("RouteEdit")
@@ -166,7 +167,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "Маршруты"))
         self.label.setText(_translate("Dialog", "Маршрут"))
         self.label_2.setText(_translate("Dialog", "Кол-во \n"
 "бортов"))

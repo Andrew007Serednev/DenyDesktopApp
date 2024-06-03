@@ -15,6 +15,11 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1039, 900)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
+        MainWindow.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(12)
         MainWindow.setFont(font)
@@ -104,7 +109,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Путевые листы"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Наряды"))
         self.orderCreateButton.setText(_translate("MainWindow", "Создать новый наряд"))
         self.orderChangeButton.setText(_translate("MainWindow", "Изменить выбранный наряд"))
         self.orderDeleteButton.setText(_translate("MainWindow", "Удалить выбранный наряд"))
