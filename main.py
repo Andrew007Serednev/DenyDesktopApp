@@ -3,6 +3,7 @@
 
 
 import sys
+import datetime
 from data_provider import orderData, Driver
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
@@ -39,6 +40,7 @@ class Appl(QMainWindow):
         NewDriver.show()
         self.ui_new_driver.driver_save_button.clicked.connect(self.save_new_driver)
         self.ui_new_driver.driver_delete_button.clicked.connect(self.remove_driver_from_list)
+        self.ui_new_driver.drivers_list.itemClicked.connect(self.edit_driver_from_list)
 
     def load_drivers_list(self):
         drivers_list = Driver().get_driver_fio_list_logic()
@@ -62,6 +64,17 @@ class Appl(QMainWindow):
         Driver().set_new_driver_logic(driver_set)
         self.ui_new_driver.drivers_list.clear()
         self.load_drivers_list()
+
+    def edit_driver_from_list(self, item):
+        print(f'EDIT: {item.text()}')
+        current_index = self.ui_new_driver.drivers_list.currentRow()
+        item = self.ui_new_driver.drivers_list.item(current_index)
+        driver_edit_set = Driver().edit_driver_from_list_logic(item.text())
+        self.ui_new_driver.new_driver_fio_edit.setText(driver_edit_set['new_driver_fio'])
+        self.ui_new_driver.new_driver_snils_edit.setText(driver_edit_set['new_driver_snils'])
+        self.ui_new_driver.new_driver_license_edit.setText(driver_edit_set['new_driver_license'])
+        print(driver_edit_set['new_driver_start_date'])
+        # self.ui_new_driver.new_driver_start_date.setDate(driver_edit_set['new_driver_start_date'])
 
     def remove_driver_from_list(self):
         current_index = self.ui_new_driver.drivers_list.currentRow()

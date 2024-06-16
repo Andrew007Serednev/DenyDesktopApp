@@ -53,6 +53,18 @@ class Driver:
         with open(self.driver_admin, 'w', encoding="utf-8") as json_file:
             json.dump(data, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
 
+    def edit_driver_from_list_logic(self, driver_fio):
+        edit_item = None
+        with open(self.driver_admin, 'r') as json_file:
+            driver_fio_dict = json.load(json_file)
+            for pare in driver_fio_dict.items():
+                if pare[1]['new_driver_fio'] == driver_fio:
+                    edit_item = pare[0]
+                    break
+            return driver_fio_dict[edit_item]
+        # with open(self.driver_admin, 'w') as json_file:
+        #     json.dump(driver_fio_dict, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
+
     def remove_driver_from_list_logic(self, driver_fio):
         del_item = None
         with open(self.driver_admin, 'r') as json_file:
