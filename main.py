@@ -4,6 +4,9 @@
 
 import sys
 import datetime
+
+from PyQt5.QtCore import QDate
+
 from data_provider import orderData, Driver
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
@@ -73,8 +76,14 @@ class Appl(QMainWindow):
         self.ui_new_driver.new_driver_fio_edit.setText(driver_edit_set['new_driver_fio'])
         self.ui_new_driver.new_driver_snils_edit.setText(driver_edit_set['new_driver_snils'])
         self.ui_new_driver.new_driver_license_edit.setText(driver_edit_set['new_driver_license'])
-        print(driver_edit_set['new_driver_start_date'])
-        # self.ui_new_driver.new_driver_start_date.setDate(driver_edit_set['new_driver_start_date'])
+        self.ui_new_driver.new_driver_start_date.setDate(QDate(
+            driver_edit_set['new_driver_start_date'][0],
+            driver_edit_set['new_driver_start_date'][1],
+            driver_edit_set['new_driver_start_date'][2]))
+        self.ui_new_driver.new_driver_end_date.setDate(QDate(
+            driver_edit_set['new_driver_end_date'][0],
+            driver_edit_set['new_driver_end_date'][1],
+            driver_edit_set['new_driver_end_date'][2]))
 
     def remove_driver_from_list(self):
         current_index = self.ui_new_driver.drivers_list.currentRow()
