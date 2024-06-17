@@ -85,7 +85,7 @@ class Ui_Dialog(object):
         self.drivers_list.setFont(font)
         self.drivers_list.setObjectName("drivers_list")
         self.driver_delete_button = QtWidgets.QPushButton(Dialog)
-        self.driver_delete_button.setGeometry(QtCore.QRect(470, 240, 161, 51))
+        self.driver_delete_button.setGeometry(QtCore.QRect(470, 330, 161, 51))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.driver_delete_button.setFont(font)
@@ -96,6 +96,12 @@ class Ui_Dialog(object):
         font.setPointSize(12)
         self.driver_save_button.setFont(font)
         self.driver_save_button.setObjectName("driver_save_button")
+        self.driver_edit_button = QtWidgets.QPushButton(Dialog)
+        self.driver_edit_button.setGeometry(QtCore.QRect(470, 240, 161, 51))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.driver_edit_button.setFont(font)
+        self.driver_edit_button.setObjectName("driver_edit_button")
 
         self.retranslateUi(Dialog)
         self.buttonBox.accepted.connect(Dialog.accept) # type: ignore
@@ -114,6 +120,8 @@ class Ui_Dialog(object):
 " из списка"))
         self.driver_save_button.setText(_translate("Dialog", "Добавить водителя\n"
 " в список"))
+        self.driver_edit_button.setText(_translate("Dialog", "Отредактировать \n"
+"водителя"))
 
 
 if __name__ == "__main__":
