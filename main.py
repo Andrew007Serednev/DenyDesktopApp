@@ -69,9 +69,17 @@ class Appl(QMainWindow):
         }
         Driver().save_new_driver_logic(driver_set)
         self.ui_new_driver.drivers_list.addItem(new_driver_fio_edit)
+        self.ui_new_driver.drivers_list.setCurrentRow(new_driver_id)
 
-    def edit_driver_from_list(self, item):
+        self.ui_new_driver.new_driver_fio_edit.clear()
+        self.ui_new_driver.new_driver_snils_edit.clear()
+        self.ui_new_driver.new_driver_license_edit.clear()
+        self.ui_new_driver.new_driver_start_date.date().currentDate()
+        self.ui_new_driver.new_driver_end_date.date().currentDate()
+
+    def edit_driver_from_list(self):
         current_index = self.ui_new_driver.drivers_list.currentRow()
+        self.recalculate_drivers_list()
         driver_edit_set = Driver().edit_driver_from_list_logic(current_index)
         self.ui_new_driver.new_driver_fio_edit.setText(driver_edit_set['new_driver_fio'])
         self.ui_new_driver.new_driver_snils_edit.setText(driver_edit_set['new_driver_snils'])
@@ -113,9 +121,16 @@ class Appl(QMainWindow):
                                         f'{item.text()} ?',
                                         QMessageBox.Yes | QMessageBox.No)
         if question == QMessageBox.Yes:
-            item = self.ui_new_driver.drivers_list.takeItem(current_index)
-            Driver().remove_driver_from_list_logic(item.text())
+            self.ui_new_driver.drivers_list.takeItem(current_index)
+            Driver().remove_driver_from_list_logic(current_index)
             del item
+
+    def recalculate_drivers_list(self):
+        print('RECALC')
+        current_index = self.ui_new_driver.drivers_list.currentRow()
+        item = self.ui_new_driver.drivers_list.item(current_index)
+        print(current_index)
+        print(item)
 
     def open_new_route(self):
         global NewRoute

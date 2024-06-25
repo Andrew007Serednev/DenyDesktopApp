@@ -62,22 +62,22 @@ class Driver:
         with open(self.driver_admin, 'w', encoding="utf-8") as json_file:
             json.dump(data, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
 
-    def edit_driver_from_list_logic(self, item):
+    def edit_driver_from_list_logic(self, current_index):
         edit_item = None
         with open(self.driver_admin, 'r') as json_file:
             driver_fio_dict = json.load(json_file)
-            for pare in driver_fio_dict.items():
-                if pare[1]['new_driver_id'] == item:
-                    edit_item = pare[0]
-                    break
-            return driver_fio_dict[edit_item]
+        for pare in driver_fio_dict.items():
+            if pare[1]['new_driver_id'] == current_index:
+                edit_item = pare[0]
+                break
+        return driver_fio_dict[edit_item]
 
-    def remove_driver_from_list_logic(self, driver_fio):
+    def remove_driver_from_list_logic(self, current_index):
         del_item = None
         with open(self.driver_admin, 'r') as json_file:
             driver_fio_dict = json.load(json_file)
             for pare in driver_fio_dict.items():
-                if pare[1]['new_driver_fio'] == driver_fio:
+                if pare[1]['new_driver_id'] == current_index:
                     del_item = pare[0]
                     break
             del driver_fio_dict[del_item]
