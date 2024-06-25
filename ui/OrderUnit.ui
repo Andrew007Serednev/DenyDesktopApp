@@ -16,22 +16,6 @@
   <property name="modal">
    <bool>true</bool>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>10</y>
-     <width>81</width>
-     <height>461</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Vertical</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-   </property>
-  </widget>
   <widget class="QDateEdit" name="dateEdit">
    <property name="geometry">
     <rect>
@@ -47,43 +31,13 @@
     </font>
    </property>
   </widget>
-  <widget class="QListWidget" name="listWidget">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>100</y>
-     <width>61</width>
-     <height>561</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <item>
-    <property name="text">
-     <string>508</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>501</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>503</string>
-    </property>
-   </item>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>60</y>
+     <y>70</y>
      <width>61</width>
-     <height>31</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
@@ -95,41 +49,11 @@
     <string>Борт №</string>
    </property>
   </widget>
-  <widget class="QListWidget" name="listWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>710</y>
-     <width>81</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <item>
-    <property name="text">
-     <string>2</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>3</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>21</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>4</string>
-    </property>
-   </item>
-  </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>680</y>
+     <x>140</x>
+     <y>70</y>
      <width>71</width>
      <height>21</height>
     </rect>
@@ -143,43 +67,23 @@
     <string>Маршрут</string>
    </property>
   </widget>
-  <widget class="QListWidget" name="listWidget_3">
+  <widget class="QTimeEdit" name="timeEdit">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>710</y>
-     <width>101</width>
-     <height>81</height>
+     <x>390</x>
+     <y>110</y>
+     <width>118</width>
+     <height>22</height>
     </rect>
    </property>
-   <item>
-    <property name="text">
-     <string>2</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>4</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>5</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>6</string>
-    </property>
-   </item>
   </widget>
-  <widget class="QListWidget" name="listWidget_4">
+  <widget class="QComboBox" name="comboBox">
    <property name="geometry">
     <rect>
-     <x>830</x>
-     <y>190</y>
-     <width>71</width>
-     <height>561</height>
+     <x>270</x>
+     <y>110</y>
+     <width>69</width>
+     <height>22</height>
     </rect>
    </property>
    <item>
@@ -207,28 +111,13 @@
      <string>5</string>
     </property>
    </item>
-   <item>
-    <property name="text">
-     <string>6</string>
-    </property>
-   </item>
   </widget>
-  <widget class="QTimeEdit" name="timeEdit">
+  <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>720</x>
-     <y>110</y>
-     <width>118</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>680</y>
-     <width>131</width>
+     <x>270</x>
+     <y>70</y>
+     <width>61</width>
      <height>21</height>
     </rect>
    </property>
@@ -238,67 +127,335 @@
     </font>
    </property>
    <property name="text">
-    <string>Кол-во графиков</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>800</x>
-     <y>160</y>
-     <width>51</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
     <string>График</string>
    </property>
   </widget>
-  <widget class="QWidget" name="verticalLayoutWidget">
+  <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>670</y>
-     <width>341</width>
-     <height>141</height>
+     <x>390</x>
+     <y>70</y>
+     <width>111</width>
+     <height>21</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout"/>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Время выхода</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>110</y>
+     <width>69</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>501</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>502</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>603</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>404</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QComboBox" name="comboBox_3">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>110</y>
+     <width>69</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>33</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>37</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QComboBox" name="comboBox_4">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>250</y>
+     <width>121</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Алексеев</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Середнев</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>210</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Водитель</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>60</y>
+     <width>101</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Выпустить наряд</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>20</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ок</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>150</y>
+     <width>61</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Р424АА</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_5">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>250</y>
+     <width>121</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Алексеев</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Середнев</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>210</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Механик</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_6">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>250</y>
+     <width>121</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Алексеев</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Середнев</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>210</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Диспетчер</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_7">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>250</y>
+     <width>121</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Алексеев</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Середнев</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>210</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Кондуктор</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>340</y>
+     <width>113</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>310</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Одометр</string>
+   </property>
+  </widget>
+  <widget class="QTimeEdit" name="timeEdit_2">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>110</y>
+     <width>118</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>70</y>
+     <width>151</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Время возвращения</string>
+   </property>
   </widget>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>Dialog</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>rejected()</signal>
-   <receiver>Dialog</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

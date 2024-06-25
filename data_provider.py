@@ -39,31 +39,38 @@ class Driver:
             driver_fio_list.append(value.get('new_driver_fio'))
         return driver_fio_list
 
-    def set_new_driver_logic(self, driver_set):
+    def save_new_driver_logic(self, driver_set):
         new_driver = {}
         with open(self.driver_admin, 'r') as json_file:
             data = json.loads(json_file.read())
-        if not data:
+        if len(data.keys()) == 0:
             max_driver_id = 0
         else:
             max_driver_id = max([int(item) for item in data.keys()])
-        max_driver_id += 1
+            max_driver_id += 1
         new_driver[max_driver_id] = driver_set
         data.update(new_driver)
         with open(self.driver_admin, 'w', encoding="utf-8") as json_file:
             json.dump(data, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
 
-    def edit_driver_from_list_logic(self, driver_fio):
+    def update_edited_driver_logic(self, driver_set):
+        with open(self.driver_admin, 'r') as json_file:
+            data = json.loads(json_file.read())
+        for pare in data.items():
+            if pare[1]['new_driver_id'] == driver_set['new_driver_id']:
+                pare[1].update(driver_set)
+        with open(self.driver_admin, 'w', encoding="utf-8") as json_file:
+            json.dump(data, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
+
+    def edit_driver_from_list_logic(self, item):
         edit_item = None
         with open(self.driver_admin, 'r') as json_file:
             driver_fio_dict = json.load(json_file)
             for pare in driver_fio_dict.items():
-                if pare[1]['new_driver_fio'] == driver_fio:
+                if pare[1]['new_driver_id'] == item:
                     edit_item = pare[0]
                     break
             return driver_fio_dict[edit_item]
-        # with open(self.driver_admin, 'w') as json_file:
-        #     json.dump(driver_fio_dict, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
 
     def remove_driver_from_list_logic(self, driver_fio):
         del_item = None

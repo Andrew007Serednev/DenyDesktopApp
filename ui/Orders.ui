@@ -37,6 +37,21 @@
       <height>751</height>
      </rect>
     </property>
+    <item>
+     <property name="text">
+      <string>501-33/1-7:00</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>502-33/2-7:20</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>601-37/1-7:00</string>
+     </property>
+    </item>
    </widget>
    <widget class="QPushButton" name="orderCreateButton">
     <property name="geometry">
