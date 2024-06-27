@@ -1,62 +1,77 @@
 {
     "0":{
-        "new_driver_fio":"C",
-        "new_driver_snils":"111",
-        "new_driver_license":"0000000",
+        "new_driver_fio":"Eba Ro",
+        "new_driver_snils":"00000000",
+        "new_driver_license":"1111111",
         "new_driver_start_date":[
+            2010,
+            10,
+            10
+        ],
+        "new_driver_end_date":[
             2001,
             1,
             1
+        ]
+    },
+    "1":{
+        "new_driver_fio":"Rot Eb",
+        "new_driver_snils":"1234567890",
+        "new_driver_license":"0987654321",
+        "new_driver_start_date":[
+            2006,
+            6,
+            6
         ],
         "new_driver_end_date":[
-            2002,
-            2,
-            2
+            2005,
+            5,
+            5
+        ]
+    },
+    "2":{
+        "new_driver_fio":"Anta Bus",
+        "new_driver_snils":"986765",
+        "new_driver_license":"7657657",
+        "new_driver_start_date":[
+            2009,
+            5,
+            5
+        ],
+        "new_driver_end_date":[
+            2010,
+            6,
+            6
         ]
     },
     "3":{
-        "new_driver_fio":"D",
-        "new_driver_snils":"00000",
-        "new_driver_license":"",
+        "new_driver_fio":"Anta",
+        "new_driver_snils":"986765",
+        "new_driver_license":"7657657",
         "new_driver_start_date":[
-            2000,
-            1,
-            1
+            2009,
+            5,
+            5
         ],
         "new_driver_end_date":[
-            2000,
-            1,
-            1
+            2010,
+            6,
+            6
         ]
     },
     "4":{
-        "new_driver_fio":"AA",
-        "new_driver_snils":"8888888888888",
-        "new_driver_license":"888888888",
+        "new_driver_fio":"Beta Cross",
+        "new_driver_snils":"111",
+        "new_driver_license":"22222",
         "new_driver_start_date":[
-            2003,
-            3,
-            3
+            2020,
+            2,
+            20
         ],
         "new_driver_end_date":[
-            2004,
-            4,
-            4
-        ]
-    },
-    "5":{
-        "new_driver_fio":"A",
-        "new_driver_snils":"8888888888888",
-        "new_driver_license":"888888888",
-        "new_driver_start_date":[
-            2003,
-            3,
-            3
-        ],
-        "new_driver_end_date":[
-            2004,
-            4,
-            4
+            2025,
+            12,
+            15
         ]
     }
 }
