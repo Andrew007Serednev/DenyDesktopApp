@@ -5,11 +5,13 @@
 import sys
 import datetime
 
-from PyQt5.QtCore import QDate
-
+from PyQt5.QtWidgets import *
+from PyQt5 import QtCore, QtGui
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
 from data_provider import orderData, Driver
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
+from PyQt5.QtWidgets import *
 from forms.Orders import Ui_MainWindow
 from forms.OrderUnit import Ui_Dialog as orderUnitDialog
 from forms.NewDriver import Ui_Dialog as NewDriverDialog
@@ -50,37 +52,45 @@ class Appl(QMainWindow):
     def load_drivers_list(self):
         drivers_list = Driver().get_driver_fio_list_logic()
         self.ui_new_driver.drivers_list.addItems(drivers_list)
+        self.ui_new_driver.drivers_list.sortItems()
         self.ui_new_driver.drivers_list.setCurrentRow(0)
 
     def save_new_driver(self):
-        new_driver_id = self.ui_new_driver.drivers_list.count()
         new_driver_fio_edit = self.ui_new_driver.new_driver_fio_edit.text()
         new_driver_snils_edit = self.ui_new_driver.new_driver_snils_edit.text()
         new_driver_license_edit = self.ui_new_driver.new_driver_license_edit.text()
         new_driver_start_date = self.ui_new_driver.new_driver_start_date.date().getDate()
         new_driver_end_date = self.ui_new_driver.new_driver_end_date.date().getDate()
-        driver_set = {
-                'new_driver_id': new_driver_id,
-                'new_driver_fio': new_driver_fio_edit,
-                'new_driver_snils': new_driver_snils_edit,
-                'new_driver_license': new_driver_license_edit,
-                'new_driver_start_date': new_driver_start_date,
-                'new_driver_end_date': new_driver_end_date
-        }
-        Driver().save_new_driver_logic(driver_set)
-        self.ui_new_driver.drivers_list.addItem(new_driver_fio_edit)
-        self.ui_new_driver.drivers_list.setCurrentRow(new_driver_id)
-
-        self.ui_new_driver.new_driver_fio_edit.clear()
-        self.ui_new_driver.new_driver_snils_edit.clear()
-        self.ui_new_driver.new_driver_license_edit.clear()
-        self.ui_new_driver.new_driver_start_date.date().currentDate()
-        self.ui_new_driver.new_driver_end_date.date().currentDate()
+        new_item = QListWidgetItem(new_driver_fio_edit)
+        if not Driver().check_uni_item(new_driver_fio_edit):
+            self.ui_new_driver.drivers_list.addItem(new_item)
+            print(f'NEW: {new_item.text()}')
+            self.ui_new_driver.drivers_list.sortItems()
+            # driver_index = self.ui_new_driver.drivers_list.indexFromItem(new_item).row()
+            self.ui_new_driver.drivers_list.setCurrentItem(new_item)
+            driver_set = {
+                    # 'new_driver_id': driver_index,
+                    'new_driver_fio': new_driver_fio_edit,
+                    'new_driver_snils': new_driver_snils_edit,
+                    'new_driver_license': new_driver_license_edit,
+                    'new_driver_start_date': new_driver_start_date,
+                    'new_driver_end_date': new_driver_end_date
+            }
+            Driver().save_new_driver_logic(driver_set)
+            self.ui_new_driver.new_driver_fio_edit.clear()
+            self.ui_new_driver.new_driver_snils_edit.clear()
+            self.ui_new_driver.new_driver_license_edit.clear()
+            self.ui_new_driver.new_driver_start_date.date().currentDate()
+            self.ui_new_driver.new_driver_end_date.date().currentDate()
+        else:
+            QMessageBox.critical(self, 'Добавление водителя', f'Водитель {new_driver_fio_edit} существует',
+                                 QMessageBox.Yes)
 
     def edit_driver_from_list(self):
-        current_index = self.ui_new_driver.drivers_list.currentRow()
-        self.recalculate_drivers_list()
-        driver_edit_set = Driver().edit_driver_from_list_logic(current_index)
+        current_item = self.ui_new_driver.drivers_list.currentItem()
+        # current_index = self.ui_new_driver.drivers_list.indexFromItem(current_item).row()
+        driver_edit_set = Driver().edit_driver_from_list_logic(current_item.text())
+        print(f'EDIT: {driver_edit_set}')
         self.ui_new_driver.new_driver_fio_edit.setText(driver_edit_set['new_driver_fio'])
         self.ui_new_driver.new_driver_snils_edit.setText(driver_edit_set['new_driver_snils'])
         self.ui_new_driver.new_driver_license_edit.setText(driver_edit_set['new_driver_license'])
@@ -92,15 +102,17 @@ class Appl(QMainWindow):
             driver_edit_set['new_driver_end_date'][0],
             driver_edit_set['new_driver_end_date'][1],
             driver_edit_set['new_driver_end_date'][2]))
+        print(f'UI EDIT: {driver_edit_set} \n')
 
     def save_edited_driver(self):
+        current_item = self.ui_new_driver.drivers_list.currentItem()
+        # current_index = self.ui_new_driver.drivers_list.indexFromItem(current_item).row()
         edited_driver_fio_edit = self.ui_new_driver.new_driver_fio_edit.text()
         edited_driver_snils_edit = self.ui_new_driver.new_driver_snils_edit.text()
         edited_driver_license_edit = self.ui_new_driver.new_driver_license_edit.text()
         edited_driver_start_date = self.ui_new_driver.new_driver_start_date.date().getDate()
         edited_driver_end_date = self.ui_new_driver.new_driver_end_date.date().getDate()
         driver_set = {
-                'new_driver_id': self.ui_new_driver.drivers_list.currentRow(),
                 'new_driver_fio': edited_driver_fio_edit,
                 'new_driver_snils': edited_driver_snils_edit,
                 'new_driver_license': edited_driver_license_edit,
@@ -110,34 +122,32 @@ class Appl(QMainWindow):
         Driver().update_edited_driver_logic(driver_set)
         self.ui_new_driver.drivers_list.clear()
         self.load_drivers_list()
+        self.ui_new_driver.drivers_list.sortItems()
+        print(f'UI SAVE EDIT: {driver_set} \n')
 
     def remove_driver_from_list(self):
-        current_index = self.ui_new_driver.drivers_list.currentRow()
-        item = self.ui_new_driver.drivers_list.item(current_index)
-        if item is None:
+        current_item = self.ui_new_driver.drivers_list.currentItem()
+        # current_index = self.ui_new_driver.drivers_list.indexFromItem(current_item).row()
+        if current_item is None:
             return
         question = QMessageBox.question(self, 'Удаление водителя',
                                         'Вы точно хотите удалить выбранного водителя\n'
-                                        f'{item.text()} ?',
+                                        f'{current_item.text()} ?',
                                         QMessageBox.Yes | QMessageBox.No)
         if question == QMessageBox.Yes:
-            self.ui_new_driver.drivers_list.takeItem(current_index)
-            Driver().remove_driver_from_list_logic(current_index)
-            del item
+            self.ui_new_driver.drivers_list.takeItem(self.ui_new_driver.drivers_list.indexFromItem(current_item).row())
+            Driver().remove_driver_from_list_logic(current_item.text())
+            print(f'UI DEL: {current_item.text()} \n')
+            del current_item
 
-    def recalculate_drivers_list(self):
-        print('RECALC')
-        current_index = self.ui_new_driver.drivers_list.currentRow()
-        item = self.ui_new_driver.drivers_list.item(current_index)
-        print(current_index)
-        print(item)
-
+    # ROUTES
     def open_new_route(self):
         global NewRoute
         NewRoute = QtWidgets.QDialog()
         self.ui_new_route.setupUi(NewRoute)
         NewRoute.show()
 
+    # ORDERS
     def load_orders(self):
         orders = orderData()
         order_list = orders.get_order_list()

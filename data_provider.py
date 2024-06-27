@@ -57,32 +57,46 @@ class Driver:
         with open(self.driver_admin, 'r') as json_file:
             data = json.loads(json_file.read())
         for pare in data.items():
-            if pare[1]['new_driver_id'] == driver_set['new_driver_id']:
+            if pare[1]['new_driver_fio'] == driver_set['new_driver_fio']:
                 pare[1].update(driver_set)
+        print(f"Back UPDATE: {driver_set}")
         with open(self.driver_admin, 'w', encoding="utf-8") as json_file:
             json.dump(data, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
 
-    def edit_driver_from_list_logic(self, current_index):
+    def edit_driver_from_list_logic(self, current_item):
         edit_item = None
         with open(self.driver_admin, 'r') as json_file:
             driver_fio_dict = json.load(json_file)
         for pare in driver_fio_dict.items():
-            if pare[1]['new_driver_id'] == current_index:
+            if pare[1]['new_driver_fio'] == current_item:
                 edit_item = pare[0]
+                print(f"Back EDIT: {pare[1]}")
                 break
         return driver_fio_dict[edit_item]
 
-    def remove_driver_from_list_logic(self, current_index):
+    def remove_driver_from_list_logic(self, current_item):
         del_item = None
         with open(self.driver_admin, 'r') as json_file:
             driver_fio_dict = json.load(json_file)
             for pare in driver_fio_dict.items():
-                if pare[1]['new_driver_id'] == current_index:
+                if pare[1]['new_driver_fio'] == current_item:
                     del_item = pare[0]
                     break
             del driver_fio_dict[del_item]
+
         with open(self.driver_admin, 'w') as json_file:
             json.dump(driver_fio_dict, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
+
+    def check_uni_item(self, item_text):
+        uni_flag = False
+        with open(self.driver_admin, 'r') as json_file:
+            driver_fio_dict = json.load(json_file)
+            for pare in driver_fio_dict.items():
+                if pare[1]['new_driver_fio'] == item_text:
+                    uni_flag = True
+                    break
+        return uni_flag
+
 
 
 # if __name__ == "__main__":

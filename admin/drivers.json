@@ -1,41 +1,8 @@
 {
     "0":{
-        "new_driver_id":0,
-        "new_driver_fio":"Q",
-        "new_driver_snils":"12345",
-        "new_driver_license":"09876",
-        "new_driver_start_date":[
-            2000,
-            1,
-            1
-        ],
-        "new_driver_end_date":[
-            2000,
-            1,
-            1
-        ]
-    },
-    "1":{
-        "new_driver_id":1,
-        "new_driver_fio":"W",
-        "new_driver_snils":"123456",
-        "new_driver_license":"087654",
-        "new_driver_start_date":[
-            2000,
-            1,
-            1
-        ],
-        "new_driver_end_date":[
-            2000,
-            1,
-            1
-        ]
-    },
-    "2":{
-        "new_driver_id":2,
-        "new_driver_fio":"E",
-        "new_driver_snils":"12345678",
-        "new_driver_license":"09876",
+        "new_driver_fio":"C",
+        "new_driver_snils":"111",
+        "new_driver_license":"0000000",
         "new_driver_start_date":[
             2001,
             1,
@@ -43,14 +10,13 @@
         ],
         "new_driver_end_date":[
             2002,
-            1,
-            1
+            2,
+            2
         ]
     },
-    "4":{
-        "new_driver_id":4,
-        "new_driver_fio":"wertwr",
-        "new_driver_snils":"sgfsg",
+    "3":{
+        "new_driver_fio":"D",
+        "new_driver_snils":"00000",
         "new_driver_license":"",
         "new_driver_start_date":[
             2000,
@@ -61,6 +27,36 @@
             2000,
             1,
             1
+        ]
+    },
+    "4":{
+        "new_driver_fio":"AA",
+        "new_driver_snils":"8888888888888",
+        "new_driver_license":"888888888",
+        "new_driver_start_date":[
+            2003,
+            3,
+            3
+        ],
+        "new_driver_end_date":[
+            2004,
+            4,
+            4
+        ]
+    },
+    "5":{
+        "new_driver_fio":"A",
+        "new_driver_snils":"8888888888888",
+        "new_driver_license":"888888888",
+        "new_driver_start_date":[
+            2003,
+            3,
+            3
+        ],
+        "new_driver_end_date":[
+            2004,
+            4,
+            4
         ]
     }
 }
