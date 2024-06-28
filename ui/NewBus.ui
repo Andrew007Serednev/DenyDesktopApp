@@ -118,6 +118,10 @@
     <string>Удалить автобус
  из списка</string>
    </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../static/delete.png</normaloff>../static/delete.png</iconset>
+   </property>
   </widget>
   <widget class="QPushButton" name="bus_save_button">
    <property name="geometry">
@@ -137,6 +141,10 @@
     <string>Добавить автобус
  в список</string>
    </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../static/new.png</normaloff>../static/new.png</iconset>
+   </property>
   </widget>
   <widget class="QPushButton" name="bus_edit_button">
    <property name="geometry">
@@ -155,6 +163,10 @@
    <property name="text">
     <string>Отредактировать 
 автобус</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../static/edit.png</normaloff>../static/edit.png</iconset>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">

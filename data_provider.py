@@ -171,6 +171,78 @@ class Bus:
         return uni_flag
 
 
+class Route:
+    def __init__(self):
+        self.route_admin = pathlib.Path('.\\admin\\route.json')
+
+    def get_route_list_logic(self):
+        route_list = []
+        with open(self.route_admin, 'r') as json_file:
+            route_dict = json.load(json_file)
+        for value in route_dict.values():
+            route_list.append(value.get('new_route_num'))
+        return route_list
+
+    def save_new_route_logic(self, route_set):
+        new_route = {}
+        with open(self.route_admin, 'r') as json_file:
+            data = json.loads(json_file.read())
+        if len(data.keys()) == 0:
+            max_route_id = 0
+        else:
+            max_route_id = max([int(item) for item in data.keys()])
+            max_route_id += 1
+        new_route[max_route_id] = route_set
+        data.update(new_route)
+        with open(self.route_admin, 'w', encoding="utf-8") as json_file:
+            json.dump(data, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
+
+    def update_edited_route_logic(self, route_set, current_item):
+        print(f'BACK SAVE ITEM: {current_item} \n')
+        with open(self.route_admin, 'r') as json_file:
+            data = json.loads(json_file.read())
+        for pare in data.items():
+            if pare[1]['new_route_num'] == current_item:
+                pare[1].update(route_set)
+        print(f"Back UPDATE: {route_set}")
+        with open(self.route_admin, 'w', encoding="utf-8") as json_file:
+            json.dump(data, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
+
+    def edit_route_from_list_logic(self, current_item):
+        edit_item = None
+        with open(self.route_admin, 'r') as json_file:
+            route_num_dict = json.load(json_file)
+        for pare in route_num_dict.items():
+            if pare[1]['new_route_num'] == current_item:
+                edit_item = pare[0]
+                print(f"Back EDIT: {pare[1]}")
+                break
+        return route_num_dict[edit_item]
+
+    def remove_route_from_list_logic(self, current_item):
+        del_item = None
+        with open(self.route_admin, 'r') as json_file:
+            route_num_dict = json.load(json_file)
+            for pare in route_num_dict.items():
+                if pare[1]['new_route_num'] == current_item:
+                    del_item = pare[0]
+                    break
+            del route_num_dict[del_item]
+
+        with open(self.route_admin, 'w') as json_file:
+            json.dump(route_num_dict, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
+
+    def check_uni_item(self, item_text):
+        uni_flag = False
+        with open(self.route_admin, 'r') as json_file:
+            bus_num_dict = json.load(json_file)
+            for pare in bus_num_dict.items():
+                if pare[1]['new_route_num'] == item_text:
+                    uni_flag = True
+                    break
+        return uni_flag
+
+
 # if __name__ == "__main__":
 #     jsonData = orderData()
 #     orderlist = jsonData.get_order_list()

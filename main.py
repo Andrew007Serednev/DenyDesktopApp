@@ -9,14 +9,14 @@ from PyQt5.QtWidgets import *
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-from data_provider import OrderData, Driver, Bus
+from data_provider import OrderData, Driver, Bus, Route
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
 from forms.Orders import Ui_MainWindow
 from forms.OrderUnit import Ui_Dialog as orderUnitDialog
 from forms.NewDriver import Ui_Dialog as NewDriverDialog
 from forms.NewBus import Ui_Dialog as NewBusDialog
-from forms.Route import Ui_Dialog as NewRouteDialog
+from forms.NewRoute import Ui_Dialog as NewRouteDialog
 
 
 class Appl(QMainWindow):
@@ -248,7 +248,77 @@ class Appl(QMainWindow):
         global NewRoute
         NewRoute = QtWidgets.QDialog()
         self.ui_new_route.setupUi(NewRoute)
+        self.load_route_list()
         NewRoute.show()
+        self.ui_new_route.route_save_button.clicked.connect(self.save_new_route)
+        self.ui_new_route.route_edit_button.clicked.connect(self.save_edited_route)
+        self.ui_new_route.route_delete_button.clicked.connect(self.remove_route_from_list)
+        self.ui_new_route.route_list.itemClicked.connect(self.edit_route_from_list)
+
+    def load_route_list(self):
+        route_list = Route().get_route_list_logic()
+        self.ui_new_route.route_list.addItems(route_list)
+        self.ui_new_route.route_list.sortItems()
+        self.ui_new_route.route_list.setCurrentRow(0)
+
+    def save_new_route(self):
+        new_route_num_edit = self.ui_new_route.new_route_edit.text()
+        new_item = QListWidgetItem(new_route_num_edit)
+        if not Route().check_uni_item(new_route_num_edit):
+            self.ui_new_route.route_list.addItem(new_item)
+            print(f'NEW: {new_item.text()}')
+            self.ui_new_route.route_list.sortItems()
+            self.ui_new_route.route_list.setCurrentItem(new_item)
+            route_set = {
+                    'new_route_num': new_route_num_edit
+            }
+            Route().save_new_route_logic(route_set)
+            self.ui_new_route.new_route_edit.clear()
+        else:
+            QMessageBox.critical(self, 'Добавление маршрута', f'Маршрут с номером {new_route_num_edit} существует',
+                                 QMessageBox.Yes)
+
+    def edit_route_from_list(self):
+        current_item = self.ui_new_route.route_list.currentItem()
+        route_edit_set = Route().edit_route_from_list_logic(current_item.text())
+        print(f'EDIT: {route_edit_set}')
+        self.ui_new_route.new_route_edit.setText(route_edit_set['new_route_num'])
+        print(f'UI EDIT: {route_edit_set} \n')
+
+    def save_edited_route(self):
+        current_item = self.ui_new_route.route_list.currentItem().text()
+        print(f'UI SAVE ITEM: {current_item} \n')
+        edited_route_num_edit = self.ui_new_route.new_route_edit.text()
+        route_set = {
+                'new_route_num': edited_route_num_edit
+        }
+        print(f'UI SAVE EDIT: {route_set} \n')
+        if edited_route_num_edit != current_item:
+            if not Route().check_uni_item(edited_route_num_edit):
+                Route().update_edited_route_logic(route_set, current_item)
+            else:
+                QMessageBox.critical(self, 'Добавление маршрута', f'Маршрут № {edited_route_num_edit} существует',
+                                     QMessageBox.Yes)
+        else:
+            Route().update_edited_route_logic(route_set, current_item)
+        self.ui_new_route.route_list.clear()
+        self.load_route_list()
+        self.ui_new_route.route_list.sortItems()
+
+    def remove_route_from_list(self):
+        current_item = self.ui_new_route.route_list.currentItem()
+        if current_item is None:
+            return
+        question = QMessageBox.question(self, 'Удаление маршрута',
+                                        'Вы точно хотите удалить выбранный маршрут\n'
+                                        f'{current_item.text()} ?',
+                                        QMessageBox.Yes | QMessageBox.No)
+        if question == QMessageBox.Yes:
+            self.ui_new_route.route_list.takeItem(self.ui_new_route.route_list.indexFromItem(current_item).row())
+            Route().remove_route_from_list_logic(current_item.text())
+            print(f'UI DEL: {current_item.text()} \n')
+            del current_item
+
 
     # ORDERS
     def load_orders(self):
