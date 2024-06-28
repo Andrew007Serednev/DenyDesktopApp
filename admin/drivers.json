@@ -1,19 +1,4 @@
 {
-    "0":{
-        "new_driver_fio":"Eba Ro",
-        "new_driver_snils":"00000000",
-        "new_driver_license":"1111111",
-        "new_driver_start_date":[
-            2010,
-            10,
-            10
-        ],
-        "new_driver_end_date":[
-            2001,
-            1,
-            1
-        ]
-    },
     "1":{
         "new_driver_fio":"Rot Eb",
         "new_driver_snils":"1234567890",
@@ -30,7 +15,7 @@
         ]
     },
     "2":{
-        "new_driver_fio":"Anta Bus",
+        "new_driver_fio":"Anto Bus",
         "new_driver_snils":"986765",
         "new_driver_license":"7657657",
         "new_driver_start_date":[
@@ -45,16 +30,16 @@
         ]
     },
     "3":{
-        "new_driver_fio":"Anta",
-        "new_driver_snils":"986765",
-        "new_driver_license":"7657657",
+        "new_driver_fio":"Vasia",
+        "new_driver_snils":"098765",
+        "new_driver_license":"09876",
         "new_driver_start_date":[
-            2009,
-            5,
-            5
+            2006,
+            10,
+            15
         ],
         "new_driver_end_date":[
-            2010,
+            2006,
             6,
             6
         ]

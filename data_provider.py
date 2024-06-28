@@ -10,7 +10,7 @@ import pathlib
 # for interaction with App tasks. App->JSON=set, JSON->App=get
 
 
-class orderData:
+class OrderData:
     def __init__(self):
         self.directory = pathlib.Path('data/orders')
 
@@ -101,14 +101,14 @@ class Driver:
 
 class Bus:
     def __init__(self):
-        self.bus_admin = pathlib.Path('.\\admin\\buses.json')
+        self.bus_admin = pathlib.Path('.\\admin\\bus.json')
 
     def get_bus_list_logic(self):
         bus_list = []
         with open(self.bus_admin, 'r') as json_file:
             bus_dict = json.load(json_file)
         for value in bus_dict.values():
-            bus_list.append(value.get('new_driver_fio'))
+            bus_list.append(value.get('new_bus_num'))
         return bus_list
 
     def save_new_bus_logic(self, bus_set):
