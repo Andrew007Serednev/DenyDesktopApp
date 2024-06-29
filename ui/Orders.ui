@@ -28,7 +28,7 @@
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QListWidget" name="orderList">
+   <widget class="QListWidget" name="order_list">
     <property name="geometry">
      <rect>
       <x>510</x>
@@ -38,12 +38,12 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="orderCreateButton">
+   <widget class="QPushButton" name="order_create_button">
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>260</y>
-      <width>241</width>
+      <y>360</y>
+      <width>251</width>
       <height>51</height>
      </rect>
     </property>
@@ -62,12 +62,12 @@
      </iconset>
     </property>
    </widget>
-   <widget class="QPushButton" name="orderChangeButton">
+   <widget class="QPushButton" name="order_edit_button">
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>80</y>
-      <width>241</width>
+      <y>180</y>
+      <width>251</width>
       <height>51</height>
      </rect>
     </property>
@@ -85,12 +85,12 @@
      </iconset>
     </property>
    </widget>
-   <widget class="QPushButton" name="orderDeleteButton">
+   <widget class="QPushButton" name="order_delete_button">
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>170</y>
-      <width>241</width>
+      <y>270</y>
+      <width>251</width>
       <height>51</height>
      </rect>
     </property>
@@ -108,7 +108,7 @@
      </iconset>
     </property>
    </widget>
-   <widget class="QCalendarWidget" name="calendarWidget">
+   <widget class="QCalendarWidget" name="calendar_order">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -123,33 +123,34 @@
      <rect>
       <x>40</x>
       <y>40</y>
-      <width>91</width>
+      <width>111</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Дата наряда</string>
+     <string>1. Дата наряда</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
       <x>510</x>
-      <y>40</y>
-      <width>211</width>
-      <height>20</height>
+      <y>29</y>
+      <width>191</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Наряды на выбранную дату</string>
+     <string>4. Наряды на выбранную
+дату</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="route_order_list">
     <property name="geometry">
      <rect>
       <x>40</x>
       <y>410</y>
-      <width>101</width>
+      <width>81</width>
       <height>31</height>
      </rect>
     </property>
@@ -159,20 +160,20 @@
      <rect>
       <x>40</x>
       <y>370</y>
-      <width>71</width>
+      <width>91</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Маршрут</string>
+     <string>2. Маршрут</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_2">
+   <widget class="QComboBox" name="order_count_list">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>160</x>
       <y>410</y>
-      <width>81</width>
+      <width>71</width>
       <height>31</height>
      </rect>
     </property>
@@ -251,30 +252,25 @@
       <string>15</string>
      </property>
     </item>
-    <item>
-     <property name="text">
-      <string/>
-     </property>
-    </item>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>160</x>
       <y>359</y>
-      <width>71</width>
+      <width>81</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Кол-во
+     <string>3. Кол-во
 графиков</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="orderCreateButton_2">
+   <widget class="QPushButton" name="create_plan_order_button">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>260</x>
       <y>400</y>
       <width>211</width>
       <height>51</height>
@@ -292,6 +288,35 @@
      <iconset>
       <normalon>../static/new.png</normalon>
      </iconset>
+    </property>
+   </widget>
+   <widget class="QTimeEdit" name="time_order_edit">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>80</y>
+      <width>81</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="add_time_to_plan_button">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>60</y>
+      <width>141</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>5. Запланировать
+время выпуска</string>
     </property>
    </widget>
   </widget>

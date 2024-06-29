@@ -10,17 +10,69 @@ import pathlib
 # for interaction with App tasks. App->JSON=set, JSON->App=get
 
 
-class OrderData:
+class Order:
     def __init__(self):
         self.directory = pathlib.Path('data/orders')
+        self.order_admin = pathlib.Path('.\\admin\\orders_per_day.json')
 
-    def get_order_list(self):
-        pattern = '*.json'
-        orderist = []
-        for currentFile in self.directory.glob(pattern):
-            orderist.append(currentFile.stem)
-        print(orderist)
-        return orderist
+    def check_uni_item(self, item_date, item_route):
+        uni_flag = False
+        with open(self.order_admin, 'r') as json_file:
+            order_num_dict = json.load(json_file)
+            for pare in order_num_dict.items():
+                if pare[1]['new_order_date'] == item_date and pare[1]['new_order_route'] == item_route:
+                    uni_flag = True
+                    break
+        return uni_flag
+
+    def create_orders_plan(self, orders_list):
+        new_route_day = {}
+        with open(self.order_admin, 'r') as json_file:
+            data = json.loads(json_file.read())
+        if len(data.keys()) == 0:
+            max_order_id = 0
+        else:
+            max_order_id = max([int(item) for item in data.keys()])
+        for order_set in orders_list:
+            max_order_id += 1
+            new_route_day[max_order_id] = order_set
+            data.update(new_route_day)
+        with open(self.order_admin, 'w', encoding="utf-8") as json_file:
+            json.dump(data, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
+
+    def get_order_list_logic(self, date):
+        order_list = []
+        with open(self.order_admin, 'r') as json_file:
+            order_dict = json.load(json_file)
+        for value in order_dict.values():
+            if value.get('new_order_date') == date:
+                route = value.get('new_order_route')
+                num = value.get('new_order_num')
+                order_item = f'{date}, {route}/{num}'
+                if value.get('planned_order_time'):
+                    time = value.get('planned_order_time')
+                    order_item = order_item + f'({time})'
+                order_list.append(order_item)
+        print(order_list)
+        return order_list
+
+    def add_order_time_logic(self, item, set):
+        with open(self.order_admin, 'r') as json_file:
+            order_dict = json.load(json_file)
+        edit_order_date = str(item).split(',')[0]
+        edit_order_route = str(item).split('/')[0].split(', ')[1]
+        edit_order_num = int(str(item).rsplit('/')[1])
+        # print(f'ITEM:{item}|__{edit_order_date}__{edit_order_route}__{edit_order_num}__')
+        for pare in order_dict.items():
+            if pare[1]['new_order_date'] == \
+                    edit_order_date and pare[1]['new_order_route'] == \
+                    edit_order_route and pare[1]['new_order_num'] == \
+                    edit_order_num:
+                pare[1].update(set)
+        with open(self.order_admin, 'w', encoding="utf-8") as json_file:
+            json.dump(order_dict, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
+        return set.get('planned_order_time')
+
 
     def remove_order_file(self, name):
         json_file = pathlib.Path.joinpath(self.directory, name).with_suffix('.json')
@@ -235,8 +287,8 @@ class Route:
     def check_uni_item(self, item_text):
         uni_flag = False
         with open(self.route_admin, 'r') as json_file:
-            bus_num_dict = json.load(json_file)
-            for pare in bus_num_dict.items():
+            route_num_dict = json.load(json_file)
+            for pare in route_num_dict.items():
                 if pare[1]['new_route_num'] == item_text:
                     uni_flag = True
                     break

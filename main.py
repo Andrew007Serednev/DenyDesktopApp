@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import *
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-from data_provider import OrderData, Driver, Bus, Route
+from data_provider import Order, Driver, Bus, Route
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
 from forms.Orders import Ui_MainWindow
@@ -25,8 +25,14 @@ class Appl(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.load_orders()
-        self.ui.orderCreateButton.clicked.connect(self.open_order_unit)
-        self.ui.orderDeleteButton.clicked.connect(self.delete_order)
+        self.plan_order_date()
+
+        self.ui.calendar_order.clicked.connect(self.plan_order_date)
+        self.ui.create_plan_order_button.clicked.connect(self.create_plan_order)
+        self.ui.add_time_to_plan_button.clicked.connect(self.add_order_time)
+        self.ui.order_edit_button.clicked.connect(self.open_order_unit)
+        # self.ui.order_create_button.clicked.connect(self.open_new_order_unit)
+        self.ui.order_delete_button.clicked.connect(self.delete_order_unit)
 
         # Menu
         self.ui.action_5.triggered.connect(self.open_new_driver)
@@ -37,6 +43,74 @@ class Appl(QMainWindow):
         self.ui_new_driver = NewDriverDialog()
         self.ui_new_bus = NewBusDialog()
         self.ui_new_route = NewRouteDialog()
+
+    # ORDERS
+    def load_orders(self):
+        route_list = Route().get_route_list_logic()
+        self.ui.route_order_list.addItems(sorted(route_list))
+
+    def plan_order_date(self):
+        self.order_date = self.ui.calendar_order.selectedDate().toString('dd-MM-yy')
+        orders = Order()
+        order_list = orders.get_order_list_logic(self.order_date)
+        self.ui.order_list.clear()
+        self.ui.order_list.addItems(order_list)
+        self.ui.order_list.setCurrentRow(0)
+        self.ui.order_list.sortItems()
+        return self.order_date
+
+    def create_plan_order(self):
+        order_date = self.plan_order_date()
+        order_route = self.ui.route_order_list.currentText()
+        order_count = self.ui.order_count_list.currentText()
+        orders_plan_list = []
+        for order_num in range(int(order_count)):
+            orders_plan_set = {
+                'new_order_date': order_date,
+                'new_order_route': order_route,
+                'new_order_num': order_num + 1
+            }
+            if not Order().check_uni_item(order_date, order_route):
+                orders_plan_list.append(orders_plan_set)
+            else:
+                QMessageBox.critical(self, 'Добавление графика', f'График на дату {order_date} \n для маршрута '
+                                                                 f'{order_route} существует', QMessageBox.Yes)
+        print(f'ORDER PLAN: {orders_plan_list}')
+        Order().create_orders_plan(orders_plan_list)
+        self.plan_order_date()
+
+    def add_order_time(self):
+        current_item = self.ui.order_list.currentItem().text()
+        print(f'UI ITEM: {current_item} \n')
+        planned_order_time = self.ui.time_order_edit.time().toString('hh:mm')
+        order_set = {
+            'planned_order_time': planned_order_time
+        }
+        print(f'UI SAVE EDIT: {order_set} \n')
+        order_time = Order().add_order_time_logic(current_item, order_set)
+        print(f'TIME: {order_time}, {type(order_time)}')
+
+
+    def open_order_unit(self):
+        global orderUnit
+        orderUnit = QtWidgets.QDialog()
+        ui_orderunit = orderUnitDialog()
+        ui_orderunit.setupUi(orderUnit)
+        orderUnit.show()
+
+    def delete_order_unit(self):
+        current_index = self.ui.order_list.currentRow()
+        item = self.ui.order_list.item(current_index)
+        if item is None:
+            return
+        question = QMessageBox.question(self, 'Удаление путевого листа',
+                                        'Вы точно хотите удалить выбранный путевой лист\n'
+                                        f'{item.text()} ?',
+                                        QMessageBox.Yes | QMessageBox.No)
+        if question == QMessageBox.Yes:
+            item = self.ui.order_list.takeItem(current_index)
+            Order().remove_order_file(item.text())
+            del item
 
     # DRIVERS
     def open_new_driver(self):
@@ -318,35 +392,6 @@ class Appl(QMainWindow):
             Route().remove_route_from_list_logic(current_item.text())
             print(f'UI DEL: {current_item.text()} \n')
             del current_item
-
-
-    # ORDERS
-    def load_orders(self):
-        orders = OrderData()
-        order_list = orders.get_order_list()
-        self.ui.orderList.addItems(order_list)
-        self.ui.orderList.setCurrentRow(0)
-
-    def open_order_unit(self):
-        global orderUnit
-        orderUnit = QtWidgets.QDialog()
-        ui_orderunit = orderUnitDialog()
-        ui_orderunit.setupUi(orderUnit)
-        orderUnit.show()
-
-    def delete_order(self):
-        current_index = self.ui.orderList.currentRow()
-        item = self.ui.orderList.item(current_index)
-        if item is None:
-            return
-        question = QMessageBox.question(self, 'Удаление путевого листа',
-                                        'Вы точно хотите удалить выбранный путевой лист\n'
-                                        f'{item.text()} ?',
-                                        QMessageBox.Yes | QMessageBox.No)
-        if question == QMessageBox.Yes:
-            item = self.ui.orderList.takeItem(current_index)
-            OrderData().remove_order_file(item.text())
-            del item
 
 
 def app():
