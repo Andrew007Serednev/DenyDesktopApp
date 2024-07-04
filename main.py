@@ -47,7 +47,9 @@ class Appl(QMainWindow):
     # ORDERS
     def load_orders(self):
         route_list = Route().get_route_list_logic()
-        self.ui.route_order_list.addItems(sorted(route_list))
+        self.ui.order_route_list.addItems(sorted(route_list))
+        driver_list = Driver().get_driver_fio_list_logic()
+        self.ui.order_driver_list.addItems(sorted(driver_list))
 
     def plan_order_date(self):
         self.order_date = self.ui.calendar_order.selectedDate().toString('dd-MM-yy')
@@ -61,7 +63,7 @@ class Appl(QMainWindow):
 
     def create_plan_order(self):
         order_date = self.plan_order_date()
-        order_route = self.ui.route_order_list.currentText()
+        order_route = self.ui.order_route_list.currentText()
         order_count = self.ui.order_count_list.currentText()
         orders_plan_list = []
         for order_num in range(int(order_count)):
@@ -89,6 +91,7 @@ class Appl(QMainWindow):
         print(f'UI SAVE EDIT: {order_set} \n')
         order_time = Order().add_order_time_logic(current_item, order_set)
         print(f'TIME: {order_time}, {type(order_time)}')
+        self.plan_order_date()
 
 
     def open_order_unit(self):

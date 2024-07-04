@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1039</width>
+    <width>1050</width>
     <height>900</height>
    </rect>
   </property>
@@ -42,7 +42,7 @@
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>360</y>
+      <y>420</y>
       <width>251</width>
       <height>51</height>
      </rect>
@@ -53,8 +53,8 @@
      </font>
     </property>
     <property name="text">
-     <string>Создать новый наряд
-вне плана</string>
+     <string>Создать новый наряд вне 
+плана</string>
     </property>
     <property name="icon">
      <iconset>
@@ -66,7 +66,7 @@
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>180</y>
+      <y>240</y>
       <width>251</width>
       <height>51</height>
      </rect>
@@ -77,7 +77,8 @@
      </font>
     </property>
     <property name="text">
-     <string>Изменить выбранный наряд</string>
+     <string>Создать или отредактировать
+наряд </string>
     </property>
     <property name="icon">
      <iconset>
@@ -89,7 +90,7 @@
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>270</y>
+      <y>330</y>
       <width>251</width>
       <height>51</height>
      </rect>
@@ -128,7 +129,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>1. Дата наряда</string>
+     <string>Дата наряда</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -141,11 +142,11 @@
      </rect>
     </property>
     <property name="text">
-     <string>4. Наряды на выбранную
+     <string>Наряды на выбранную
 дату</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="route_order_list">
+   <widget class="QComboBox" name="order_route_list">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -165,7 +166,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>2. Маршрут</string>
+     <string>Маршрут</string>
     </property>
    </widget>
    <widget class="QComboBox" name="order_count_list">
@@ -263,7 +264,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>3. Кол-во
+     <string>Кол-во
 графиков</string>
     </property>
    </widget>
@@ -308,15 +309,64 @@
    <widget class="QPushButton" name="add_time_to_plan_button">
     <property name="geometry">
      <rect>
-      <x>870</x>
-      <y>60</y>
-      <width>141</width>
-      <height>61</height>
+      <x>850</x>
+      <y>80</y>
+      <width>91</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>5. Запланировать
-время выпуска</string>
+     <string>Применить</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="order_driver_list">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>170</y>
+      <width>251</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>130</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>30</y>
+      <width>221</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Время выхода на линию 
+по выбранному графику</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>120</y>
+      <width>261</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Водитель для выбранного графика</string>
     </property>
    </widget>
   </widget>
@@ -325,7 +375,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1039</width>
+     <width>1050</width>
      <height>27</height>
     </rect>
    </property>

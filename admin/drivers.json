@@ -1,19 +1,4 @@
 {
-    "0":{
-        "new_driver_fio":"Andrey Serednev",
-        "new_driver_snils":"124647",
-        "new_driver_license":"098765",
-        "new_driver_start_date":[
-            2001,
-            1,
-            1
-        ],
-        "new_driver_end_date":[
-            2002,
-            2,
-            2
-        ]
-    },
     "1":{
         "new_driver_fio":"Vlad Sha",
         "new_driver_snils":"098765",
@@ -27,6 +12,21 @@
             2003,
             2,
             2
+        ]
+    },
+    "2":{
+        "new_driver_fio":"Agent Bor",
+        "new_driver_snils":"000",
+        "new_driver_license":"111",
+        "new_driver_start_date":[
+            2000,
+            1,
+            1
+        ],
+        "new_driver_end_date":[
+            2001,
+            1,
+            1
         ]
     }
 }
