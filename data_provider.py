@@ -49,9 +49,14 @@ class Order:
                 route = value.get('new_order_route')
                 num = value.get('new_order_num')
                 order_item = f'{date}, {route}/{num}'
+                print(f'{order_item}')
                 if value.get('planned_order_time'):
                     time = value.get('planned_order_time')
-                    order_item = order_item + f'({time})'
+                    order_item = order_item + f', {time}'
+                order_list.append(order_item)
+                if value.get('planned_order_driver'):
+                    driver = value.get('planned_order_driver')
+                    order_item = order_item + f'({driver})'
                 order_list.append(order_item)
         print(order_list)
         return order_list
@@ -61,18 +66,19 @@ class Order:
             order_dict = json.load(json_file)
         edit_order_date = str(item).split(',')[0]
         edit_order_route = str(item).split('/')[0].split(', ')[1]
-        edit_order_num = int(str(item).rsplit('/')[1])
+        edit_order_num = str(item).split(',')[1].split('/')[1]
         # print(f'ITEM:{item}|__{edit_order_date}__{edit_order_route}__{edit_order_num}__')
         for pare in order_dict.items():
+            print(f"ADD: {pare[1]}")
             if pare[1]['new_order_date'] == \
                     edit_order_date and pare[1]['new_order_route'] == \
                     edit_order_route and pare[1]['new_order_num'] == \
                     edit_order_num:
+
                 pare[1].update(set)
         with open(self.order_admin, 'w', encoding="utf-8") as json_file:
             json.dump(order_dict, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
         return set.get('planned_order_time')
-
 
     def remove_order_file(self, name):
         json_file = pathlib.Path.joinpath(self.directory, name).with_suffix('.json')

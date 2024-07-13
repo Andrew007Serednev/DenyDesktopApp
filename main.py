@@ -25,11 +25,11 @@ class Appl(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.load_orders()
-        self.plan_order_date()
+        # self.plan_order_date()
 
-        self.ui.calendar_order.clicked.connect(self.plan_order_date)
+        # self.ui.calendar_order.clicked.connect(self.plan_order_date)
         self.ui.create_plan_order_button.clicked.connect(self.create_plan_order)
-        self.ui.add_time_to_plan_button.clicked.connect(self.add_order_time)
+        # self.ui.add_time_to_plan_button.clicked.connect(self.add_order_time)
         self.ui.order_edit_button.clicked.connect(self.open_order_unit)
         # self.ui.order_create_button.clicked.connect(self.open_new_order_unit)
         self.ui.order_delete_button.clicked.connect(self.delete_order_unit)
@@ -50,50 +50,19 @@ class Appl(QMainWindow):
         self.ui.order_route_list.addItems(sorted(route_list))
         driver_list = Driver().get_driver_fio_list_logic()
         self.ui.order_driver_list.addItems(sorted(driver_list))
-
-    def plan_order_date(self):
-        self.order_date = self.ui.calendar_order.selectedDate().toString('dd-MM-yy')
-        orders = Order()
-        order_list = orders.get_order_list_logic(self.order_date)
-        self.ui.order_list.clear()
-        self.ui.order_list.addItems(order_list)
-        self.ui.order_list.setCurrentRow(0)
-        self.ui.order_list.sortItems()
-        return self.order_date
+        # self.ui.order_table.clear()
+        self.ui.order_table.insertRow(1)
+        self.ui.order_table.setItem(0, 0, QTableWidgetItem("05.07.2024"))
+        # self.ui.order_table.setHorizontalHeaderLabels(['Водитель'])
 
     def create_plan_order(self):
-        order_date = self.plan_order_date()
-        order_route = self.ui.order_route_list.currentText()
-        order_count = self.ui.order_count_list.currentText()
-        orders_plan_list = []
-        for order_num in range(int(order_count)):
-            orders_plan_set = {
-                'new_order_date': order_date,
-                'new_order_route': order_route,
-                'new_order_num': order_num + 1
-            }
-            if not Order().check_uni_item(order_date, order_route):
-                orders_plan_list.append(orders_plan_set)
-            else:
-                QMessageBox.critical(self, 'Добавление графика', f'График на дату {order_date} \n для маршрута '
-                                                                 f'{order_route} существует', QMessageBox.Yes)
-        print(f'ORDER PLAN: {orders_plan_list}')
-        Order().create_orders_plan(orders_plan_list)
-        self.plan_order_date()
+        order_date = self.ui.calendar_order.selectedDate().toString('dd-MM-yy')
+        orders = Order()
+        order_list = orders.get_order_list_logic(order_date)
+        print(f'ORDER BUTTON: {order_list}')
 
-    def add_order_time(self):
-        current_item = self.ui.order_list.currentItem().text()
-        print(f'UI ITEM: {current_item} \n')
-        planned_order_time = self.ui.time_order_edit.time().toString('hh:mm')
-        order_set = {
-            'planned_order_time': planned_order_time
-        }
-        print(f'UI SAVE EDIT: {order_set} \n')
-        order_time = Order().add_order_time_logic(current_item, order_set)
-        print(f'TIME: {order_time}, {type(order_time)}')
-        self.plan_order_date()
-
-
+    #####################################################################################################
+    #ORDER UNIT
     def open_order_unit(self):
         global orderUnit
         orderUnit = QtWidgets.QDialog()
@@ -102,8 +71,8 @@ class Appl(QMainWindow):
         orderUnit.show()
 
     def delete_order_unit(self):
-        current_index = self.ui.order_list.currentRow()
-        item = self.ui.order_list.item(current_index)
+        current_index = self.ui.order_table.currentRow()
+        item = self.ui.order_table.item(current_index)
         if item is None:
             return
         question = QMessageBox.question(self, 'Удаление путевого листа',
@@ -111,7 +80,7 @@ class Appl(QMainWindow):
                                         f'{item.text()} ?',
                                         QMessageBox.Yes | QMessageBox.No)
         if question == QMessageBox.Yes:
-            item = self.ui.order_list.takeItem(current_index)
+            item = self.ui.order_table.takeItem(current_index)
             Order().remove_order_file(item.text())
             del item
 
@@ -395,6 +364,26 @@ class Appl(QMainWindow):
             Route().remove_route_from_list_logic(current_item.text())
             print(f'UI DEL: {current_item.text()} \n')
             del current_item
+
+
+# class comboCompanies(QComboBox):
+#     def __init__(self, parent):
+#         super().__init__(parent)
+#         self.setStyleSheet('font-size: 12px')
+#         self.addItems(['Micro', 'Qiwi', 'Vasia'])
+#
+#     def getComboValue(self):
+#         print(self.currentText())
+#
+#
+# class TableWidget(QTableWidget):
+#     def __init__(self):
+#         super().__init__(1, 5)
+#         self.setColumnWidth(4, 200)
+#         self.verticalHeader().setDefaultSectionSize(50)
+#         self.horizontalHeader().setDefaultSectionSize(250)
+#         combo = comboCompanies(self)
+#         self.setCellWidget(0, 4, combo)
 
 
 def app():
