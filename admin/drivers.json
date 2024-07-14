@@ -13,5 +13,20 @@
             3,
             3
         ]
+    },
+    "1":{
+        "new_driver_fio":"Vlad Shalomov",
+        "new_driver_snils":"23456787654",
+        "new_driver_license":"987567890",
+        "new_driver_start_date":[
+            2001,
+            1,
+            1
+        ],
+        "new_driver_end_date":[
+            2007,
+            6,
+            5
+        ]
     }
 }

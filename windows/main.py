@@ -19,22 +19,23 @@ class MainWindow(QMainWindow):
         self.main_window.action_driver.triggered.connect(self.open_new_driver)
 
         self.table_widget = self.main_window.tableWidget
-        self.table_widget.setRowCount(7)
+        self.table_widget.setRowCount(len(Bus().get_bus_list_logic()))
         self.table_widget.setColumnCount(4)
         self.table_widget.setHorizontalHeaderLabels(
             ['Автобус', 'Маршрут', 'График', 'Водитель'])
         self.load_drivers_col()
         self.load_bus_col()
 
+    def load_bus_col(self):
+        bus_list = Bus().get_bus_list_logic()
+        for row in range(len(bus_list)):
+            print(bus_list[row])
+            self.table_widget.setItem(row, 0, QTableWidgetItem(str(bus_list[row])))
+
     def load_drivers_col(self):
         for row in range(self.table_widget.rowCount()):
             drivers_list = DriversList(self)
             self.table_widget.setCellWidget(row, 3, drivers_list)
-
-    def load_bus_col(self):
-        for row in range(self.table_widget.rowCount()):
-            bus_list = BusList(self)
-            self.table_widget.setCellWidget(row, 0, bus_list)
 
     def open_new_driver(self):
         driver_dialog = DriverDialog()
