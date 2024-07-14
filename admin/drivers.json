@@ -1,107 +1,17 @@
 {
-    "1":{
-        "new_driver_fio":"Vlad Sha",
-        "new_driver_snils":"098765",
-        "new_driver_license":"12345670",
+    "0":{
+        "new_driver_fio":"Andrey Serednev",
+        "new_driver_snils":"12345678",
+        "new_driver_license":"098765",
         "new_driver_start_date":[
-            2000,
-            1,
-            1
-        ],
-        "new_driver_end_date":[
-            2003,
+            2002,
             2,
             2
-        ]
-    },
-    "2":{
-        "new_driver_fio":"Agent Bor",
-        "new_driver_snils":"000",
-        "new_driver_license":"111",
-        "new_driver_start_date":[
-            2000,
-            1,
-            1
         ],
         "new_driver_end_date":[
-            2001,
-            1,
-            1
-        ]
-    },
-    "3":{
-        "new_driver_fio":"dfghj",
-        "new_driver_snils":"2345",
-        "new_driver_license":"2345",
-        "new_driver_start_date":[
-            2000,
-            1,
-            1
-        ],
-        "new_driver_end_date":[
-            2000,
-            1,
-            1
-        ]
-    },
-    "4":{
-        "new_driver_fio":"werfghjkl",
-        "new_driver_snils":"",
-        "new_driver_license":"",
-        "new_driver_start_date":[
-            2000,
-            1,
-            1
-        ],
-        "new_driver_end_date":[
-            2000,
-            1,
-            1
-        ]
-    },
-    "5":{
-        "new_driver_fio":"sdfghjk",
-        "new_driver_snils":"",
-        "new_driver_license":"",
-        "new_driver_start_date":[
-            2000,
-            1,
-            1
-        ],
-        "new_driver_end_date":[
-            2000,
-            1,
-            1
-        ]
-    },
-    "6":{
-        "new_driver_fio":"sdfghj",
-        "new_driver_snils":"",
-        "new_driver_license":"",
-        "new_driver_start_date":[
-            2000,
-            1,
-            1
-        ],
-        "new_driver_end_date":[
-            2000,
-            1,
-            1
-        ]
-    },
-    "7":{
-        "new_driver_fio":"sdfgh",
-        "new_driver_snils":"",
-        "new_driver_license":"",
-        "new_driver_start_date":[
-            2000,
-            1,
-            1
-        ],
-        "new_driver_end_date":[
-            2000,
-            1,
-            1
+            2013,
+            3,
+            3
         ]
     }
 }

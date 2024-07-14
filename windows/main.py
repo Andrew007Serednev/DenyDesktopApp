@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidge
 from PyQt5.QtCore import *
 from data_provider import Order, Driver, Bus, Route
 from forms.OrderWindow import Ui_MainWindow
-from windows.drivers import DriverDialog
+from windows.drivers import *
 
 
 class MainWindow(QMainWindow):
@@ -39,19 +39,6 @@ class MainWindow(QMainWindow):
     def open_new_driver(self):
         driver_dialog = DriverDialog()
         driver_dialog.exec_()
-
-
-class DriversList(QComboBox):
-    def __init__(self, parent):
-        super().__init__(parent)
-        self.setStyleSheet('font-size: 14px')
-        driver_list = Driver().get_driver_fio_list_logic()
-        self.addItems(driver_list)
-        self.currentIndexChanged.connect(self.getComboValue)
-
-    def getComboValue(self):
-        print(self.currentText())
-        return self.currentText()
 
 
 class BusList(QComboBox):
