@@ -32,7 +32,7 @@ class Appl(QMainWindow):
         # self.ui.add_time_to_plan_button.clicked.connect(self.add_order_time)
         self.ui.order_edit_button.clicked.connect(self.open_order_unit)
         # self.ui.order_create_button.clicked.connect(self.open_new_order_unit)
-        self.ui.order_delete_button.clicked.connect(self.delete_order_unit)
+        # self.ui.order_delete_button.clicked.connect(self.delete_order_unit)
 
         # Menu
         self.ui.action_5.triggered.connect(self.open_new_driver)
@@ -50,9 +50,12 @@ class Appl(QMainWindow):
         self.ui.order_route_list.addItems(sorted(route_list))
         driver_list = Driver().get_driver_fio_list_logic()
         self.ui.order_driver_list.addItems(sorted(driver_list))
+        print(f'{driver_list}\n{route_list}')
+        self.ui.order_table.setHorizontalHeaderLabels(list('ABCDE'))
+        self.ui.order_table.setColumnWidth(4, 200)
+        self.ui.order_table.verticalHeader().setDefaultSectionSize(50)
+        self.ui.order_table.horizontalHeader().setDefaultSectionSize(250)
         # self.ui.order_table.clear()
-        self.ui.order_table.insertRow(1)
-        self.ui.order_table.setItem(0, 0, QTableWidgetItem("05.07.2024"))
         # self.ui.order_table.setHorizontalHeaderLabels(['Водитель'])
 
     def create_plan_order(self):
@@ -70,19 +73,19 @@ class Appl(QMainWindow):
         ui_orderunit.setupUi(orderUnit)
         orderUnit.show()
 
-    def delete_order_unit(self):
-        current_index = self.ui.order_table.currentRow()
-        item = self.ui.order_table.item(current_index)
-        if item is None:
-            return
-        question = QMessageBox.question(self, 'Удаление путевого листа',
-                                        'Вы точно хотите удалить выбранный путевой лист\n'
-                                        f'{item.text()} ?',
-                                        QMessageBox.Yes | QMessageBox.No)
-        if question == QMessageBox.Yes:
-            item = self.ui.order_table.takeItem(current_index)
-            Order().remove_order_file(item.text())
-            del item
+    # def delete_order_unit(self):
+    #     current_index = self.ui.order_table.currentRow()
+    #     item = self.ui.order_table.item(current_index)
+    #     if item is None:
+    #         return
+    #     question = QMessageBox.question(self, 'Удаление путевого листа',
+    #                                     'Вы точно хотите удалить выбранный путевой лист\n'
+    #                                     f'{item.text()} ?',
+    #                                     QMessageBox.Yes | QMessageBox.No)
+    #     if question == QMessageBox.Yes:
+    #         item = self.ui.order_table.takeItem(current_index)
+    #         Order().remove_order_file(item.text())
+    #         del item
 
     # DRIVERS
     def open_new_driver(self):

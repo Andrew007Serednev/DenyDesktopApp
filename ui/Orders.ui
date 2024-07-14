@@ -537,6 +537,16 @@
      </property>
     </item>
    </widget>
+   <widget class="QTableWidget" name="order_table">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>390</y>
+      <width>521</width>
+      <height>361</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

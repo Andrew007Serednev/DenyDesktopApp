@@ -24,6 +24,7 @@ class TableWidget(QTableWidget):
         combo = comboCompanies(self)
         self.setCellWidget(0, 4, combo)
 
+
 class AppDemo(QWidget):
     def __init__(self):
         super().__init__()
