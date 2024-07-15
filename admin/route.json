@@ -1,23 +1,86 @@
 {
-    "18":{
-        "new_route_num":"8"
+    "0":{
+        "day_type":"Hollydays",
+        "route_num":"3",
+        "graphic_num":"2",
+        "time_line":"00:02"
     },
-    "19":{
-        "new_route_num":"2"
+    "1":{
+        "day_type":"Work 2",
+        "route_num":"2",
+        "graphic_num":"1",
+        "time_line":"01:02"
     },
-    "20":{
-        "new_route_num":"3"
+    "2":{
+        "day_type":"Hollydays",
+        "route_num":"3",
+        "graphic_num":"4",
+        "time_line":"00:00"
     },
-    "21":{
-        "new_route_num":"4"
+    "3":{
+        "day_type":"Work 1",
+        "route_num":"2",
+        "graphic_num":"5",
+        "time_line":"00:00"
     },
-    "22":{
-        "new_route_num":"7"
+    "4":{
+        "day_type":"Work 1",
+        "route_num":"2",
+        "graphic_num":"5",
+        "time_line":"00:00"
     },
-    "23":{
-        "new_route_num":"5"
+    "5":{
+        "day_type":"Vih",
+        "route_num":"3",
+        "graphic_num":"3",
+        "time_line":"00:00"
     },
-    "24":{
-        "new_route_num":"9"
+    "6":{
+        "day_type":"Hollydays",
+        "route_num":"2",
+        "graphic_num":"2",
+        "time_line":"00:00"
+    },
+    "7":{
+        "day_type":"Hollydays",
+        "route_num":"3",
+        "graphic_num":"3",
+        "time_line":"00:00"
+    },
+    "8":{
+        "day_type":"Work 2",
+        "route_num":"2",
+        "graphic_num":"2",
+        "time_line":"00:00"
+    },
+    "9":{
+        "day_type":"Hollydays",
+        "route_num":"21",
+        "graphic_num":"2",
+        "time_line":"00:00"
+    },
+    "10":{
+        "day_type":"Work 2",
+        "route_num":"21",
+        "graphic_num":"4",
+        "time_line":"00:00"
+    },
+    "11":{
+        "day_type":"Work 2",
+        "route_num":"21",
+        "graphic_num":"3",
+        "time_line":"00:00"
+    },
+    "12":{
+        "day_type":"Work 2",
+        "route_num":"1",
+        "graphic_num":"2",
+        "time_line":"00:00"
+    },
+    "13":{
+        "day_type":"Hollydays",
+        "route_num":"3",
+        "graphic_num":"4",
+        "time_line":"00:00"
     }
 }

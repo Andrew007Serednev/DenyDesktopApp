@@ -9,6 +9,7 @@ from data_provider import Order, Driver, Bus, Route
 from forms.OrderWindow import Ui_MainWindow
 from windows.drivers import *
 from windows.bus import *
+from windows.routes import *
 
 
 class MainWindow(QMainWindow):
@@ -19,12 +20,13 @@ class MainWindow(QMainWindow):
 
         self.main_window.action_driver.triggered.connect(self.open_new_driver)
         self.main_window.action_bus.triggered.connect(self.open_new_bus)
+        self.main_window.action_route.triggered.connect(self.open_new_route)
 
         self.table_widget = self.main_window.tableWidget
         self.table_widget.setRowCount(len(Bus().get_bus_list_logic()))
-        self.table_widget.setColumnCount(4)
+        self.table_widget.setColumnCount(5)
         self.table_widget.setHorizontalHeaderLabels(
-            ['Автобус', 'Маршрут', 'График', 'Водитель'])
+            ['Автобус', 'Маршрут', 'График', 'Водитель', ''])
         self.load_drivers_col()
         self.load_bus_col()
 
@@ -47,18 +49,9 @@ class MainWindow(QMainWindow):
         bus_dialog = BusDialog()
         bus_dialog.exec_()
 
-
-class BusList(QComboBox):
-    def __init__(self, parent):
-        super().__init__(parent)
-        self.setStyleSheet('font-size: 14px')
-        bus_list = Bus().get_bus_list_logic()
-        self.addItems(bus_list)
-        self.currentIndexChanged.connect(self.getComboValue)
-
-    def getComboValue(self):
-        print(self.currentText())
-        return self.currentText()
+    def open_new_route(self):
+        route_dialog = RoutesDialog()
+        route_dialog.exec_()
 
 
 if __name__ == "__main__":

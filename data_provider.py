@@ -233,13 +233,14 @@ class Route:
     def __init__(self):
         self.route_admin = pathlib.Path('.\\admin\\route.json')
 
-    def get_route_list_logic(self):
-        route_list = []
+    def get_route_dict_logic(self):
+        route_dict = {}
         with open(self.route_admin, 'r') as json_file:
             route_dict = json.load(json_file)
-        for value in route_dict.values():
-            route_list.append(value.get('new_route_num'))
-        return route_list
+        routes = route_dict.values()
+        # for value in route_dict.values():
+        #     route_list.append(value.get('new_route_num'))
+        return routes
 
     def save_new_route_logic(self, route_set):
         new_route = {}
@@ -277,18 +278,20 @@ class Route:
                 break
         return route_num_dict[edit_item]
 
-    def remove_route_from_list_logic(self, current_item):
+    def remove_route_from_list_logic(self, routes_set):
         del_item = None
         with open(self.route_admin, 'r') as json_file:
             route_num_dict = json.load(json_file)
-            for pare in route_num_dict.items():
-                if pare[1]['new_route_num'] == current_item:
-                    del_item = pare[0]
-                    break
-            del route_num_dict[del_item]
-
-        with open(self.route_admin, 'w') as json_file:
-            json.dump(route_num_dict, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
+        for pare in route_num_dict.items():
+            for route in routes_set.items():
+                print(f"{pare[0]} = {pare[1]['day_type']} | {route[1]}")
+            # if pare[1]['day_type'] == pare[1]['day_type']:
+        #         del_item = pare[0]
+        #         break
+        # del route_num_dict[del_item]
+        #
+        # with open(self.route_admin, 'w') as json_file:
+        #     json.dump(route_num_dict, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
 
     def check_uni_item(self, item_text):
         uni_flag = False

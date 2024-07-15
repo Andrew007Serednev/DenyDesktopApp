@@ -102,3 +102,16 @@ class BusDialog(QDialog):
             Bus().remove_bus_from_list_logic(current_item.text())
             print(f'UI DEL: {current_item.text()} \n')
             del current_item
+
+
+class BusList(QComboBox):
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.setStyleSheet('font-size: 14px')
+        bus_list = Bus().get_bus_list_logic()
+        self.addItems(bus_list)
+        self.currentIndexChanged.connect(self.getComboValue)
+
+    def getComboValue(self):
+        print(self.currentText())
+        return self.currentText()
