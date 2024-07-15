@@ -8,6 +8,7 @@ from PyQt5.QtCore import *
 from data_provider import Order, Driver, Bus, Route
 from forms.OrderWindow import Ui_MainWindow
 from windows.drivers import *
+from windows.bus import *
 
 
 class MainWindow(QMainWindow):
@@ -17,6 +18,7 @@ class MainWindow(QMainWindow):
         self.main_window.setupUi(self)
 
         self.main_window.action_driver.triggered.connect(self.open_new_driver)
+        self.main_window.action_bus.triggered.connect(self.open_new_bus)
 
         self.table_widget = self.main_window.tableWidget
         self.table_widget.setRowCount(len(Bus().get_bus_list_logic()))
@@ -40,6 +42,10 @@ class MainWindow(QMainWindow):
     def open_new_driver(self):
         driver_dialog = DriverDialog()
         driver_dialog.exec_()
+
+    def open_new_bus(self):
+        bus_dialog = BusDialog()
+        bus_dialog.exec_()
 
 
 class BusList(QComboBox):

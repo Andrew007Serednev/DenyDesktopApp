@@ -28,5 +28,20 @@
             6,
             5
         ]
+    },
+    "2":{
+        "new_driver_fio":"Dany",
+        "new_driver_snils":"000",
+        "new_driver_license":"11111",
+        "new_driver_start_date":[
+            2000,
+            1,
+            1
+        ],
+        "new_driver_end_date":[
+            2000,
+            1,
+            1
+        ]
     }
 }
