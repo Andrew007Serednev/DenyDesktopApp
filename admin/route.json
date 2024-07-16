@@ -82,5 +82,17 @@
         "route_num":"3",
         "graphic_num":"4",
         "time_line":"00:00"
+    },
+    "14":{
+        "day_type":"Hollydays",
+        "route_num":"3",
+        "graphic_num":"3",
+        "time_line":"00:03"
+    },
+    "15":{
+        "day_type":"Work 1",
+        "route_num":"1",
+        "graphic_num":"3",
+        "time_line":"00:00"
     }
 }

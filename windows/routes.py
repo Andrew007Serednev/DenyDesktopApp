@@ -21,6 +21,8 @@ class RoutesDialog(QDialog):
         self.ui_routes.button_add_route.clicked.connect(self.save_new_route)
         self.ui_routes.button_del_route.clicked.connect(self.remove_route)
 
+        self.load_route_table()
+
     def save_new_route(self):
         day_type = self.ui_routes.list_days.currentItem().text()
         route_num = self.ui_routes.list_routes.currentItem().text()
@@ -69,4 +71,4 @@ class RoutesDialog(QDialog):
             }
             # print(routes_set)
             self.table_routes.removeRow(current_row)
-            Route().remove_route_from_list_logic(routes_set)
+            # Route().remove_route_from_list_logic(routes_set)
