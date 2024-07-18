@@ -91,7 +91,7 @@ class Driver:
 
     def get_driver_fio_list_logic(self):
         driver_fio_list = []
-        with open(self.driver_admin, 'r') as json_file:
+        with open(self.driver_admin, 'r', encoding='utf-8') as json_file:
             driver_fio_dict = json.load(json_file)
         for value in driver_fio_dict.values():
             driver_fio_list.append(value.get('new_driver_fio'))
@@ -99,7 +99,7 @@ class Driver:
 
     def save_new_driver_logic(self, driver_set):
         new_driver = {}
-        with open(self.driver_admin, 'r') as json_file:
+        with open(self.driver_admin, 'r', encoding='utf-8') as json_file:
             data = json.loads(json_file.read())
         if len(data.keys()) == 0:
             max_driver_id = 0
@@ -113,7 +113,7 @@ class Driver:
 
     def update_edited_driver_logic(self, driver_set, current_item):
         print(f'BACK SAVE ITEM: {current_item} \n')
-        with open(self.driver_admin, 'r') as json_file:
+        with open(self.driver_admin, 'r', encoding='utf-8') as json_file:
             data = json.loads(json_file.read())
         for pare in data.items():
             if pare[1]['new_driver_fio'] == current_item:
@@ -124,7 +124,7 @@ class Driver:
 
     def edit_driver_from_list_logic(self, current_item):
         edit_item = None
-        with open(self.driver_admin, 'r') as json_file:
+        with open(self.driver_admin, 'r', encoding='utf-8') as json_file:
             driver_fio_dict = json.load(json_file)
         for pare in driver_fio_dict.items():
             if pare[1]['new_driver_fio'] == current_item:
@@ -135,7 +135,7 @@ class Driver:
 
     def remove_driver_from_list_logic(self, current_item):
         del_item = None
-        with open(self.driver_admin, 'r') as json_file:
+        with open(self.driver_admin, 'r', encoding='utf-8') as json_file:
             driver_fio_dict = json.load(json_file)
             for pare in driver_fio_dict.items():
                 if pare[1]['new_driver_fio'] == current_item:
@@ -143,12 +143,12 @@ class Driver:
                     break
             del driver_fio_dict[del_item]
 
-        with open(self.driver_admin, 'w') as json_file:
+        with open(self.driver_admin, 'w', encoding='utf-8') as json_file:
             json.dump(driver_fio_dict, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
 
     def check_uni_item(self, item_text):
         uni_flag = False
-        with open(self.driver_admin, 'r') as json_file:
+        with open(self.driver_admin, 'r', encoding='utf-8') as json_file:
             driver_fio_dict = json.load(json_file)
             for pare in driver_fio_dict.items():
                 if pare[1]['new_driver_fio'] == item_text:
@@ -163,7 +163,7 @@ class Bus:
 
     def get_bus_list_logic(self):
         bus_list = []
-        with open(self.bus_admin, 'r') as json_file:
+        with open(self.bus_admin, 'r', encoding='utf-8') as json_file:
             bus_dict = json.load(json_file)
         for value in bus_dict.values():
             bus_list.append(value.get('new_bus_num'))
@@ -171,7 +171,7 @@ class Bus:
 
     def save_new_bus_logic(self, bus_set):
         new_bus = {}
-        with open(self.bus_admin, 'r') as json_file:
+        with open(self.bus_admin, 'r', encoding='utf-8') as json_file:
             data = json.loads(json_file.read())
         if len(data.keys()) == 0:
             max_bus_id = 0
@@ -185,7 +185,7 @@ class Bus:
 
     def update_edited_bus_logic(self, bus_set, current_item):
         print(f'BACK SAVE ITEM: {current_item} \n')
-        with open(self.bus_admin, 'r') as json_file:
+        with open(self.bus_admin, 'r', encoding='utf-8') as json_file:
             data = json.loads(json_file.read())
         for pare in data.items():
             if pare[1]['new_bus_num'] == current_item:
@@ -196,7 +196,7 @@ class Bus:
 
     def edit_bus_from_list_logic(self, current_item):
         edit_item = None
-        with open(self.bus_admin, 'r') as json_file:
+        with open(self.bus_admin, 'r', encoding='utf-8') as json_file:
             bus_num_dict = json.load(json_file)
         for pare in bus_num_dict.items():
             if pare[1]['new_bus_num'] == current_item:
@@ -207,7 +207,7 @@ class Bus:
 
     def remove_bus_from_list_logic(self, current_item):
         del_item = None
-        with open(self.bus_admin, 'r') as json_file:
+        with open(self.bus_admin, 'r', encoding='utf-8') as json_file:
             bus_num_dict = json.load(json_file)
             for pare in bus_num_dict.items():
                 if pare[1]['new_bus_num'] == current_item:
@@ -220,7 +220,7 @@ class Bus:
 
     def check_uni_item(self, item_text):
         uni_flag = False
-        with open(self.bus_admin, 'r') as json_file:
+        with open(self.bus_admin, 'r', encoding='utf-8') as json_file:
             bus_num_dict = json.load(json_file)
             for pare in bus_num_dict.items():
                 if pare[1]['new_bus_num'] == item_text:
@@ -235,16 +235,16 @@ class Route:
 
     def get_route_dict_logic(self):
         route_dict = {}
-        with open(self.route_admin, 'r') as json_file:
+        with open(self.route_admin, 'r', encoding='utf-8') as json_file:
             route_dict = json.load(json_file)
-        routes = route_dict.values()
+        routes = route_dict.items()
         # for value in route_dict.values():
         #     route_list.append(value.get('new_route_num'))
         return routes
 
     def save_new_route_logic(self, route_set):
         new_route = {}
-        with open(self.route_admin, 'r') as json_file:
+        with open(self.route_admin, 'r', encoding='utf-8') as json_file:
             data = json.loads(json_file.read())
         if len(data.keys()) == 0:
             max_route_id = 0
@@ -256,46 +256,21 @@ class Route:
         with open(self.route_admin, 'w', encoding="utf-8") as json_file:
             json.dump(data, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
 
-    def update_edited_route_logic(self, route_set, current_item):
-        print(f'BACK SAVE ITEM: {current_item} \n')
-        with open(self.route_admin, 'r') as json_file:
-            data = json.loads(json_file.read())
-        for pare in data.items():
-            if pare[1]['new_route_num'] == current_item:
-                pare[1].update(route_set)
-        print(f"Back UPDATE: {route_set}")
-        with open(self.route_admin, 'w', encoding="utf-8") as json_file:
-            json.dump(data, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
-
-    def edit_route_from_list_logic(self, current_item):
-        edit_item = None
-        with open(self.route_admin, 'r') as json_file:
-            route_num_dict = json.load(json_file)
-        for pare in route_num_dict.items():
-            if pare[1]['new_route_num'] == current_item:
-                edit_item = pare[0]
-                print(f"Back EDIT: {pare[1]}")
-                break
-        return route_num_dict[edit_item]
-
-    def remove_route_from_list_logic(self, routes_set):
+    def remove_route_from_list_logic(self, key):
         del_item = None
-        with open(self.route_admin, 'r') as json_file:
+        with open(self.route_admin, 'r', encoding='utf-8') as json_file:
             route_num_dict = json.load(json_file)
-        for pare in route_num_dict.items():
-            for route in routes_set.items():
-                print(f"{pare[0]} = {pare[1]['day_type']} | {route[1]}")
-            # if pare[1]['day_type'] == pare[1]['day_type']:
-        #         del_item = pare[0]
-        #         break
-        # del route_num_dict[del_item]
-        #
-        # with open(self.route_admin, 'w') as json_file:
-        #     json.dump(route_num_dict, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
+        for k, v in route_num_dict.items():
+            if k == key:
+                print(f'DELETE: {route_num_dict[k]}')
+                del route_num_dict[k]
+                break
+        with open(self.route_admin, 'w', encoding='utf-8') as json_file:
+            json.dump(route_num_dict, json_file, ensure_ascii=False, indent=4, separators=(',', ':'))
 
     def check_uni_item(self, item_text):
         uni_flag = False
-        with open(self.route_admin, 'r') as json_file:
+        with open(self.route_admin, 'r', encoding='utf-8') as json_file:
             route_num_dict = json.load(json_file)
             for pare in route_num_dict.items():
                 if pare[1]['new_route_num'] == item_text:

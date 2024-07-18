@@ -35,7 +35,6 @@ class MainWindow(QMainWindow):
     def load_bus_col(self):
         bus_list = Bus().get_bus_list_logic()
         for row in range(len(bus_list)):
-            print(bus_list[row])
             self.table_widget.setItem(row, 0, QTableWidgetItem(str(bus_list[row])))
 
     def load_drivers_col(self):

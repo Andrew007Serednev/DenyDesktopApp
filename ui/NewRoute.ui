@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>912</width>
+    <width>1051</width>
     <height>772</height>
    </rect>
   </property>
@@ -161,22 +161,22 @@
    </property>
    <item>
     <property name="text">
-     <string>Work 1</string>
+     <string>Понедельник-Среда</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>Work 2</string>
+     <string>Четверг-Суббота</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>Hollydays</string>
+     <string>Выходные</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>Vih</string>
+     <string>Праздники</string>
     </property>
    </item>
   </widget>
@@ -219,7 +219,7 @@
     <rect>
      <x>450</x>
      <y>20</y>
-     <width>431</width>
+     <width>581</width>
      <height>731</height>
     </rect>
    </property>

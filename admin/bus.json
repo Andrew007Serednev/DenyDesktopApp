@@ -1,15 +1,9 @@
 {
-    "2":{
-        "new_bus_num":"1",
-        "new_bus_gosnomer":"22",
-        "new_bus_model":"000",
-        "new_bus_odometr":"0000"
-    },
     "3":{
-        "new_bus_num":"3",
-        "new_bus_gosnomer":"3",
-        "new_bus_model":"3",
-        "new_bus_odometr":"3"
+        "new_bus_num":"7",
+        "new_bus_gosnomer":"3456ЕКУ",
+        "new_bus_model":"ЛИАЗ",
+        "new_bus_odometr":"564"
     },
     "6":{
         "new_bus_num":"405",
@@ -24,9 +18,9 @@
         "new_bus_odometr":"657"
     },
     "8":{
-        "new_bus_num":"777",
-        "new_bus_gosnomer":"76567hjv",
-        "new_bus_model":"gjhguygj",
-        "new_bus_odometr":"234"
+        "new_bus_num":"2",
+        "new_bus_gosnomer":"К3456ЛД",
+        "new_bus_model":"лиаз",
+        "new_bus_odometr":"54"
     }
 }
