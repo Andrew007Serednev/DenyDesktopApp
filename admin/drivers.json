@@ -1,7 +1,7 @@
 {
     "0":{
         "new_driver_fio":"Андрей Середнев",
-        "new_driver_snils":"12345678",
+        "new_driver_snils":"0123455",
         "new_driver_license":"098765",
         "new_driver_start_date":[
             2002,
@@ -54,9 +54,9 @@
             1
         ],
         "new_driver_end_date":[
-            2000,
+            2001,
             1,
-            1
+            3
         ]
     }
 }

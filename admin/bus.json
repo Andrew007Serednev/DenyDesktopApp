@@ -1,6 +1,6 @@
 {
     "3":{
-        "new_bus_num":"7",
+        "new_bus_num":"8",
         "new_bus_gosnomer":"3456ЕКУ",
         "new_bus_model":"ЛИАЗ",
         "new_bus_odometr":"564"
@@ -14,13 +14,13 @@
     "7":{
         "new_bus_num":"11",
         "new_bus_gosnomer":"34A",
-        "new_bus_model":"67",
+        "new_bus_model":"Scania",
         "new_bus_odometr":"657"
     },
     "8":{
         "new_bus_num":"2",
         "new_bus_gosnomer":"К3456ЛД",
-        "new_bus_model":"лиаз",
+        "new_bus_model":"Daewoo",
         "new_bus_odometr":"54"
     }
 }
