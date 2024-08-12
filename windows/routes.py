@@ -1,6 +1,7 @@
 #! /usr/bin/python3
 # -*- coding: utf-8 -*-
 import itertools
+import logging
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QDialog, QVBoxLayout, \
     QListWidget, QPushButton, QComboBox, QListWidgetItem, QMessageBox
@@ -17,40 +18,59 @@ class RoutesDialog(QDialog):
         self.ui_routes.setupUi(self)
 
         self.table_routes = self.ui_routes.table_routes
-        self.table_routes.setColumnCount(4)
-        self.table_routes.setHorizontalHeaderLabels(['День', 'Маршрут', 'График', 'Время'])
+        self.table_routes.setColumnCount(3)
+        self.table_routes.setHorizontalHeaderLabels(['Маршрут', 'График', 'Время'])
         self.ui_routes.button_add_route.clicked.connect(self.save_new_route)
         self.ui_routes.button_del_route.clicked.connect(self.remove_route)
+        # self.load_route_table()
 
-        self.load_route_table()
+        self.ui_routes.list_routes.setCurrentRow(0)
+        self.ui_routes.list_bus_counts.setCurrentRow(0)
+        self.ui_routes.list_routes.itemSelectionChanged.connect(self.create_new_route)
+        self.ui_routes.list_bus_counts.itemSelectionChanged.connect(self.create_new_route)
+
+    def create_new_route(self):
+        route_num = self.ui_routes.list_routes.currentItem().text()
+        graphic_num = self.ui_routes.list_bus_counts.currentItem().text()
+        self.table_routes.setRowCount(int(graphic_num))
+        print(f'NUM: {graphic_num}, {type(graphic_num)}')
+        for i in range(int(graphic_num)):
+            item_route_num = QTableWidgetItem(route_num)
+            item_graphic = QTableWidgetItem(str(i+1))
+            item_time = QTableWidgetItem("07:00")
+            self.table_routes.setItem(i, 0, item_route_num)
+            self.table_routes.setItem(i, 1, item_graphic)
+            self.table_routes.setItem(i, 2, item_time)
 
     def save_new_route(self):
-        day_type = self.ui_routes.list_days.currentItem().text()
         route_num = self.ui_routes.list_routes.currentItem().text()
-        graphic_num = self.ui_routes.list_graphics.currentItem().text()
-        time_line = self.ui_routes.time_line.time().toString('HH:mm')
+        graphic_count = self.ui_routes.list_bus_counts.currentText()
         routes_set = {
-            'day_type': day_type,
             'route_num': route_num,
-            'graphic_num': graphic_num,
-            'time_line': time_line
+            'graphic': {
+                'graphic_num': graphic_count,
+                'time': {}
+            }
         }
-        Route().save_new_route_logic(routes_set)
-        self.load_route_table()
+        for i in self.table_routes.rowCount():
+            item_time = self.table_routes.takeItem(2, i)
+            routes_set['graphic']['time'][i] = item_time
+
+        print(f'SET: \n{routes_set}')
+        # Route().save_new_route_logic(routes_set)
+        # # self.load_route_table()
 
     def load_route_table(self):
         routes_dict = Route().get_route_dict_logic()
         self.table_routes.setRowCount(len(routes_dict))
         for i, (key, row) in enumerate(routes_dict):
-            item_day_type = QTableWidgetItem(str(row["day_type"]))
             item_route_num = QTableWidgetItem(str(row['route_num']))
             item_route_num.setData(Qt.UserRole, key)
             item_graphic_num = QTableWidgetItem(str(row['graphic_num']))
             item_time_line = QTableWidgetItem(str(row['time_line']))
-            self.table_routes.setItem(i, 0, item_day_type)
-            self.table_routes.setItem(i, 1, item_route_num)
-            self.table_routes.setItem(i, 2, item_graphic_num)
-            self.table_routes.setItem(i, 3, item_time_line)
+            self.table_routes.setItem(i, 0, item_route_num)
+            self.table_routes.setItem(i, 1, item_graphic_num)
+            self.table_routes.setItem(i, 2, item_time_line)
 
     def remove_route(self):
         current_row = self.table_routes.currentRow()

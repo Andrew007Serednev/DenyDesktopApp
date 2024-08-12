@@ -231,7 +231,7 @@ class Bus:
 
 class Route:
     def __init__(self):
-        self.route_admin = pathlib.Path('.\\admin\\route.json')
+        self.route_admin = pathlib.Path('admin/routes.json')
 
     def get_route_dict_logic(self):
         route_dict = {}
