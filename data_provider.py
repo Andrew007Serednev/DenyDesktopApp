@@ -159,7 +159,7 @@ class Driver:
 
 class Bus:
     def __init__(self):
-        self.bus_admin = pathlib.Path('.\\admin\\bus.json')
+        self.bus_admin = pathlib.Path('admin/bus.json')
 
     def get_bus_list_logic(self):
         bus_list = []
